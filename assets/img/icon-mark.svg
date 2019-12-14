@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="9px" height="13px" viewBox="0 0 9 13" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <g id="Group-12" transform="translate(0.5 0.5)">
+    <path d="M4 11.5556C4 11.5556 8 6.04416 8 3.89372C8 1.74328 6.20914 0 4 0C1.79086 0 0 1.74328 0 3.89372C0 6.04416 4 11.5556 4 11.5556Z" id="Oval" fill="none" stroke="#999" stroke-width="1" />
+    <path d="M1.5 3C2.32843 3 3 2.32843 3 1.5C3 0.671573 2.32843 0 1.5 0C0.671573 0 0 0.671573 0 1.5C0 2.32843 0.671573 3 1.5 3Z" transform="translate(2.5 2.5)" id="Oval" fill="#999" stroke="none" />
+  </g>
+</svg>

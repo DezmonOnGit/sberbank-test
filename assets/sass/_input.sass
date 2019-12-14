@@ -1,0 +1,34 @@
+.input__checkbox
+	display: none
+
+.input__switcher
+	display: block
+	width: 58px
+	height: 24px
+	background-color: #fff
+	border-radius: 12px
+	padding: 3px
+	position: relative
+	cursor: pointer
+
+.input__switcher:after
+	content: ''
+	width: 18px
+	height: 18px
+	border-radius: 50%
+	background-color: #00D36D
+	position: absolute
+	top: 3px
+	left: 3px
+	transition: all .4s
+
+.input__checkbox:checked + .input__switcher:after
+	left: calc(100% - 21px)
+
+.input__checkbox:not(:checked) ~ .switcher__text.switcher__item--order-1
+	color: #000
+
+.input__checkbox:checked ~ .switcher__text.switcher__item--order-3
+	color: #000
+
+

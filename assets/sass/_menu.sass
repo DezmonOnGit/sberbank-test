@@ -1,0 +1,45 @@
+.menu
+	display: flex
+	flex-wrap: wrap
+
+.menu__header
+	width: 60%
+	margin-right: auto
+
+.menu__item
+	padding: 15px 0
+	margin-right: 25px
+	overflow: hidden
+	position: relative
+
+.menu__item:after
+	content: ''
+	width: 90px
+	height: 28px
+	background-color: #E1615D
+	transform: rotate(-45deg)
+	transform-origin: center
+	position: absolute
+	bottom: 0
+	left: calc(50% - 50px)
+	z-index: 5
+	transition: all .3s
+
+.menu__item:hover:after
+	bottom: 50%
+	left: calc(50% - 35px)
+	background-color: #00D36D
+
+.menu__link
+	position: relative
+	z-index: 10
+
+.menu__link:hover
+	color: #000
+
+.menu__item--disabled
+	pointer-events: none
+
+.menu__item--disabled:after,
+.menu__item--disabled:before
+	display: none
