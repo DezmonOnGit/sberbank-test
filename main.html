@@ -6,19 +6,144 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Главная</title>
-    <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|PT+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontello.css">
-    <link rel="stylesheet" href="css/jquery.formstyler.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/bundle.css">
 </head>
 <body>
-    <header class="header"></header>
-    <main class="main"></main>
+    <header class="header">
+        <div class="header__inner container">
+            <div class="header__row">
+                <a href="#" class="logo logo--main logo__header">
+                    <img class="logo__img" src="assets/img/logo.svg" alt="logo">
+                </a>
+                <nav class="menu menu__header">
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Купоны и сертификаты</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Впечатления</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Авиабилеты</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Ж/д билеты</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Отели</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Каршеринг</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Театры</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Страхование</a>
+                    </div>
+                    <div class="menu__item menu__item--disabled">
+                        <a href="#" class="menu__link link">Как подключиться</a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="#" class="menu__link link">Партнеры</a>
+                    </div>
+                </nav>
+                <div class="header__info">
+                    <div class="user user__bonuses">
+                            <span class="user__count">95</span>
+                            <span class="user__text">Бонусов</span>
+                    </div>
+                    <div class="user user__city balloon">
+                        <div class="user__current-city balloon__opener"><i class="icon icon--mark"></i>Санкт-Петербург</div>
+                        <div class="balloon__inner">
+                            <div class="balloon__content">
+                                <div class="title title__baloon">Ваш город</div>
+                                <div class="balloon__city">Санкт-Петербург</div>
+                                <div class="bar bar__balloon">
+                                    <div class="bar__item">
+                                        <button class="button button--theme-green button__accept" type="button">Да, все верно</button>
+                                    </div>
+                                    <div class="bar__item">
+                                        <button class="button button__change" type="button">Выбрать другой</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__inner main__inner--theme-night">
+            <div class="main__item title title--center title__main">
+                <div class="title__inner container">
+                    <h1>Партнеры и предложения</h1>
+                </div>
+            </div>
+            <div class="main__item partners">
+                <div class="filter filter--offsets">
+                    <div class="filter__inner container">
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Все партнеры</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Популярные</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Супермаркеты</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Кафе и рестораны</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Такси</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Красота</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Электроника и бытовая техника</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Зоотовары</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white" type="button">Кино и театр</button>
+                    </div>
+                    <div class="filter__item">
+                        <button class="button button--theme-white button__more" type="button">• • •</button>
+                    </div>
+                </div>
+                </div>
+                <div class="switcher switcher--offsets switcher__filter">
+                    <div class="switcher__inner container">
+                        <div class="input-box input-box__switcher switcher__items">
+                            <input id="switcher-1" class="input input__checkbox" type="checkbox">
+                            <label class="switcher__item switcher__item--order-2 input__switcher" for="switcher-1"></label>
+                            <div class="switcher__item switcher__item--order-1 switcher__text">Начисляют спасибо</div>
+                            <div class="switcher__item switcher__item--order-3 switcher__text">Принимают спасибо</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="partners__inner cards">
+                    <div class="cards__inner container">
+                        <div class="cards__item">
+                            <div class="title title__cards">1.5%</div>
+                            <div class="prompt prompt__cards">Спасибо от суммы покупки</div>
+                            <div class="cards__img-box">
+                                <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
+                            </div>
+                            <div class="cards__name">М.Видео</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-    <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/jquery.formstyler.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/custom.js"></script>
 </body>
 </html>
