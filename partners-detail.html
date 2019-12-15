@@ -214,13 +214,22 @@
             </div>
         </main>
 
-        <div id="partner-addresses" class="mfp-hide white-popup-block">
-            <h1>Modal dialog</h1>
-            <p>You won't be able to dismiss this by usual means (escape or
-                click button), but you can close it programatically based on
-                user choices or actions.</p>
-            <p><a class="modal__dismiss" href="#">Dismiss</a></p>
+        <div id="partner-addresses" class="modal">
+            <div class="modal__inner">
+                <div class="modal__dismiss-box">
+                    <a class="modal__dismiss" href="javascript: void(0);">❌</a>
+                </div>
+                <div class="title title__modal">
+                    <div class="title__inner">
+                        <h3>Адреса магазинов</h3>
+                    </div>
+                </div>
+                <div class="map map--box map--box-large map__addresses">
+                    <div id="map-addresses" class="map__inner"></div>
+                </div>
+            </div>
         </div>
+
         <script src="assets/js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/link-download-polyfill.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
