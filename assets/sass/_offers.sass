@@ -78,9 +78,11 @@
 	height: auto
 	background-color: transparent
 	padding: 0
+	overflow: hidden
 	margin-right: 15px
 	margin-bottom: 15px
 	perspective: 10px
+	border-radius: 0
 	transform-style: preserve-3d
 	@media (max-width: 767px)
 		margin-right: 0
@@ -141,9 +143,18 @@
 		height: 100%
 		margin-bottom: 8px
 
+.cards--small-img.offers__inner .cards__item[data-cards-in-row="2"]>.cards__img-box
+	width: 320px
+	height: 239px
+
 .offers__inner .cards__info .cards__img-box
 	width: 50px
 	height: 50px
 
 .offers__inner .cards__inner
 	margin-bottom: 0
+
+.offers__btns
+	display: flex
+	flex-wrap: wrap
+	justify-content: center
