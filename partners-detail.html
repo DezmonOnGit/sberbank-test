@@ -7,6 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Главная</title>
         <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
         <link rel="stylesheet" href="assets/css/bundle.css">
     </head>
     <body>
@@ -106,7 +107,7 @@
                     <div class="map map--box">
                         <div id="map-partner" class="map__inner"></div>
                         <div class="partners__addresses">
-                            <a href="#modal-1" class="link link--theme-green">14 адресов</a>
+                            <a href="#partner-addresses" class="link link--theme-green link--modal-opener">14 адресов</a>
                         </div>
                     </div>
                     <div class="tabs tabs__partners">
@@ -115,7 +116,7 @@
                             <button class="button button--theme-dashed button__tabs-nav" type="button" data-tab-index="2">Оплата бонусами</button>
                         </nav>
                         <div class="tabs__content">
-                            <div class="tabs__item" data-tab-index="1">
+                            <div class="tabs__item tabs__item--active" data-tab-index="1">
                                 <div class="list list__bonuses list--theme-night">
                                     <div class="list__item list__item--highlight">
                                         <div class="list__percents">99%</div>
@@ -144,6 +145,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tabs__item" data-tab-index="2">
+                                <div class="list list__bonuses list--theme-night">
+                                    <div class="list__item list__item--highlight">
+                                        <div class="list__percents">99%</div>
+                                        <div class="list__content">
+                                            <div class="marks">
+                                                <div class="marks__inner">
+                                                    <div class="marks__item">
+                                                        <div class="marks__text">Для Вас</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="list__text">В рамках вашего уровня привилегий «Огромное спасибо» до 31 мая 2019</div>
+                                        </div>
+                                    </div>
+                                    <div class="list__item">
+                                        <div class="list__percents">5%</div>
+                                        <div class="list__content">
+                                            <div class="list__text">Спасибо при оплате Молодежным картами Сбербанка, а также картами MasterCard и Visa Platinum, MasterCard и Visa Gold и MasterCard World Black Edition;</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="partners__footer">
@@ -151,13 +175,58 @@
                     </div>
                 </div>
             </div>
+            <div class="main__item offers">
+                <div class="title title__offers">
+                    <div class="title__inner container container--small">
+                        <h3>3 предложения</h3>
+                    </div>
+                </div>
+                <div class="tabs tabs__offers">
+                    <div class="offers__inner container container--small cards cards--small-img">
+                        <div class="cards__inner">
+                            <a href="" class="cards__item" data-cards-in-row="2">
+                                <div class="cards__img-box">
+                                    <img class="cards__img" src="assets/img/offers-4.jpeg" alt="offers-4">
+                                </div>
+                                <div class="cards__info cards__info--full">
+                                    <div class="prompt prompt__cards-info">14 кинотеатров</div>
+                                    <div class="cards__text cards__description">Скидка 500 рублей</div>
+                                    <div class="cards__text cards__text--coin cards__text--bold">
+                                        <span class="cards__text-value">500</span>
+                                        <i class="icon icon--coin"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="" class="cards__item" data-cards-in-row="2">
+                                <div class="cards__img-box">
+                                    <img class="cards__img" src="assets/img/offers-1.jpeg" alt="offers-1">
+                                </div>
+                                <div class="cards__info cards__info--full">
+                                    <div class="cards__text cards__description">20% СПАСИБО за технику Electrolux</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="offers__btns container">
+                            <a href="" class="button button--theme-green button__partners">Еще 4 партнера</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
+        <div id="partner-addresses" class="mfp-hide white-popup-block">
+            <h1>Modal dialog</h1>
+            <p>You won't be able to dismiss this by usual means (escape or
+                click button), but you can close it programatically based on
+                user choices or actions.</p>
+            <p><a class="modal__dismiss" href="#">Dismiss</a></p>
+        </div>
         <script src="assets/js/jquery-3.4.1.min.js"></script>
         <script src="assets/js/link-download-polyfill.js"></script>
         <script src="assets/js/owl.carousel.min.js"></script>
         <script src="https://api-maps.yandex.ru/2.1/?apikey=a1931c95-89dc-4a31-8a1d-53f34c152789&load=package.full&lang=ru_RU" type="text/javascript"></script>
         <script src="assets/js/map.js"></script>
+        <script src="assets/js/magnific-popup.min.js"></script>
         <script src="assets/js/custom.js"></script>
     </body>
 </html>
