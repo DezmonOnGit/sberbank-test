@@ -69,3 +69,51 @@
 
 .offer__partner--3
     background-image: url(../img/partner-3.png)
+
+.offers--offsets
+	margin-bottom: 70px
+
+.offers__inner .cards__item
+	width: calc(33.333% - 11.25px)
+	height: auto
+	background-color: transparent
+	padding: 0
+	margin-right: 15px
+	margin-bottom: 15px
+	perspective: 10px
+	transform-style: preserve-3d
+
+.offers__inner .cards__item:hover
+	color: #000
+
+.offers__inner .cards__item > .cards__img-box .cards__img
+	transition: all 1s
+
+.offers__inner .cards__item:hover > .cards__img-box .cards__img
+	transform: scale(1.1)
+
+.offers__inner .cards__item .cards__info
+	transition: all .5s
+
+.offers__inner .cards__item:hover .cards__info
+	transform: translate3d(0, -50px, 1px) scale(.7) rotateX(1deg)
+
+.offers__inner .cards__item:nth-child(4n+4)
+	margin-right: 15px
+
+.offers__inner .cards__item:nth-child(3n+3)
+	margin-right: 0
+
+.offers__inner .cards__img-box
+	width: 319px
+	height: 240px
+	border-radius: 0
+	overflow: hidden
+	margin-bottom: 15px
+
+.offers__inner .cards__info .cards__img-box
+	width: 50px
+	height: 50px
+
+.offers__inner .cards__inner
+	margin-bottom: 0
