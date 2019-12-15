@@ -1,0 +1,37 @@
+.marks__inner
+	display: flex
+	flex-wrap: wrap
+
+.marks__item
+	padding: 6px 8px
+	margin-right: 28px
+	margin-bottom: 10px
+	background-color: #00D36D
+	position: relative
+	max-width: 100%
+
+.marks__text
+	width: 100%
+	white-space: nowrap
+	overflow: hidden
+	text-overflow: ellipsis
+	font-size: 14px
+	color: #fff
+
+.marks__item:after,
+.marks__item:before
+	content: ''
+	position: absolute
+	right: -20px
+
+.marks__item:before
+	top: 0
+	border: 10px solid transparent
+	border-left: 10px solid #00D36D
+	border-top: 10px solid #00D36D
+
+.marks__item:after
+	bottom: 0
+	border: 10px solid transparent
+	border-bottom: 10px solid #00D36D
+	border-left: 10px solid #00D36D

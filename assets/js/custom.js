@@ -312,6 +312,12 @@ $(function () {
         });
     }
 
+    //link download
+    if($('.link__download').length) {
+        $(document).on('click', '.link__download', function (evt) {
+            linkDownload(this, evt);
+        });
+    }
 });
 
 

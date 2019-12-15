@@ -1,11 +1,36 @@
 .link
-	display: inline-block
+	display: inline
 	text-decoration: none
 	color: #000
+	border-bottom: 1px solid transparent
 	transition: all .3s
 
 .link:hover
 	color: #00D36D
+	border-bottom-color: #00D36D
 
 .link--disabled
 	pointer-events: none
+
+.link--theme-green
+	color: #00D36D
+
+.link--theme-green:hover
+	color: #00D36D
+	border-bottom-color: #00D36D
+
+.link--theme-black
+	color: #000
+	border-bottom-color: transparent
+
+.link--theme-black:hover
+	color: #000
+	border-bottom-color: #000
+
+.link--theme-grey
+	color: #b8b8b8
+	border-bottom-color: transparent
+
+.link--theme-grey:hover
+	color: #b8b8b8
+	border-bottom-color: #b8b8b8
