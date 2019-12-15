@@ -1,0 +1,160 @@
+// .offers__inner
+// 	display: flex
+// 	flex-wrap: wrap
+// 	padding: 0 0.9em
+
+// .offer__item
+// 	width: 50%
+// 	padding-bottom: 50px
+
+// .offer__item:nth-child(odd)
+// 	padding-right: 0.45em
+
+// .offer__item:nth-child(even)
+// 	padding-left: 0.45em
+
+// .offer__info
+// 	position: relative
+
+// .offer__text
+// 	padding-left: 58px
+
+// .offer__title
+// 	font-size: 14px
+// 	opacity: 0.5
+
+// .offer__description
+// 	font-size: 17px
+
+// .offer__link
+// 	position: absolute
+// 	border-radius: 50%
+// 	top: 0
+// 	bottom: 0
+// 	left: 0
+// 	right: 0
+
+// .offer__pic
+// 	width: 487px
+// 	height: 367px
+// 	background-repeat: no-repeat
+// 	background-size: contain
+// 	margin-bottom: 0.9em
+
+// .offer__pic--1
+// 	background-image: url(../img/offer-1.jpg)
+
+// .offer__pic--2
+// 	background-image: url(../img/offer-2.jpg)
+
+// .offer__pic--3
+// 	background-image: url(../img/offer-3.jpg)
+
+// .offer__partner
+// 	position: absolute
+// 	left: 0
+// 	top: 50%
+// 	transform: translateY(-50%)
+// 	width: 50px
+// 	height: 50px
+// 	background-repeat: no-repeat
+// 	background-size: contain
+// 	border-radius: 50%
+
+// .offer__partner--1
+// 	background-image: url(../img/partner-1.png)
+
+// .offer__partner--2
+// 	background-image: url(../img/partner-2.png)
+
+// .offer__partner--3
+// 	background-image: url(../img/partner-3.png)
+
+.offers--offsets
+	margin-bottom: 70px
+
+.offers__inner .cards__item
+	width: calc(33.333% - 11.25px)
+	height: auto
+	background-color: transparent
+	padding: 0
+	overflow: hidden
+	margin-right: 15px
+	margin-bottom: 15px
+	perspective: 10px
+	border-radius: 0
+	transform-style: preserve-3d
+	@media (max-width: 767px)
+		margin-right: 0
+		width: 100%
+
+.offers__inner .cards__item:hover
+	color: #000
+
+.offers__inner .cards__item > .cards__img-box .cards__img
+	transition: all 1s
+
+.offers__inner .cards__item:hover > .cards__img-box .cards__img
+	transform: scale(1.1)
+
+.offers__inner .cards__item .cards__info
+	transition: all .5s
+
+.offers__inner .cards__item:hover .cards__info
+	transform: translate3d(0, -50px, 1px) scale(.7) rotateX(1deg)
+
+.offers__inner .cards__item:nth-child(4n+4)
+	margin-right: 15px
+
+.offers__inner .cards__item:nth-child(3n+3)
+	margin-right: 0
+
+.offers__inner .cards__item[data-cards-in-row="2"]
+	width: calc(50% - 16.5px)
+	margin-right: 15px
+	margin-bottom: 52px
+	@media (max-width: 1024px)
+		margin-right: 17px
+		width: calc(50% - 8.5px)
+	@media (max-width: 767px)
+		margin-right: 0
+		width: 100%
+		margin-bottom: 32px
+
+.offers__inner .cards__item[data-cards-in-row="2"]:nth-child(2n+2)
+	margin-right: 0
+
+.offers__inner .cards__img-box
+	width: 319px
+	height: 240px
+	border-radius: 0
+	overflow: hidden
+	margin-bottom: 15px
+
+.offers__inner .cards__item[data-cards-in-row="2"]>.cards__img-box
+	width: 487px
+	height: 367px
+	@media (max-width: 1024px)
+		width: 363px
+		height: 273px
+		margin: 0 0 15px
+	@media (max-width: 767px)
+		width: 100%
+		height: 100%
+		margin-bottom: 8px
+
+.cards--small-img.offers__inner .cards__item[data-cards-in-row="2"]>.cards__img-box
+	width: 320px
+	height: 239px
+
+.offers__inner .cards__info .cards__img-box
+	width: 50px
+	height: 50px
+
+.offers__inner .cards__inner
+	margin-bottom: 0
+
+.offers__btns
+	display: flex
+	flex-wrap: wrap
+	justify-content: center

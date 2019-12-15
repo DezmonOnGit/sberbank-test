@@ -9,6 +9,7 @@
 	font-weight: 400
 	line-height: 1.55
 	cursor: pointer
+	text-decoration: none
 	transition: all .3s
 
 .button:hover
@@ -31,3 +32,27 @@
 	background-color: #00D36D
 	border-color: #00D36D
 	color: #ffffff
+
+.button--theme-dashed
+	background-color: #fff
+	color: #000
+	border: 1px dashed #000
+
+.button--theme-dashed:hover
+	border-style: solid
+	border-color: #00D36D
+	background-color: #00D36D
+	color: #fff
+
+.button--theme-dashed.button--active
+	border-style: solid
+	background-color: #000
+	color: #fff
+	pointer-events: none
+
+.button__partners
+	margin: 0 10px 10px
+
+.button__tabs-nav
+	margin-right: 10px
+	margin-bottom: 10px
