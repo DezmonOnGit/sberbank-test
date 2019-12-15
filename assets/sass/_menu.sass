@@ -7,32 +7,37 @@
 	margin-right: auto
 
 .menu__item
-	padding: 15px 0
-	margin-right: 25px
+	padding: 15px 10px
+	margin-right: 5px
 	overflow: hidden
 	position: relative
 
-.menu__item:after
+.menu__link:after
 	content: ''
 	width: 90px
 	height: 28px
-	background-color: #E1615D
+	background-color: #00D36D
+	opacity: 0
 	transform: rotate(-45deg)
 	transform-origin: center
 	position: absolute
-	bottom: 0
-	left: calc(50% - 50px)
-	z-index: 5
+	bottom: -100%
+	left: -50px
+	z-index: -1
 	transition: all .3s
 
-.menu__item:hover:after
-	bottom: 50%
-	left: calc(50% - 35px)
+.menu__link:hover:after,
+.menu__item--active .menu__link:hover:after
+	bottom: 0
+	left: calc(50% - 50px)
+	opacity: 1
 	background-color: #00D36D
 
-.menu__link
-	position: relative
-	z-index: 10
+.menu__item--active .menu__link:after
+	bottom: 0
+	left: calc(50% - 50px)
+	opacity: 1
+	background-color: #E1615D
 
 .menu__link:hover
 	color: #000
