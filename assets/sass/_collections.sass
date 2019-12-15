@@ -16,11 +16,20 @@
 	background-color: #fff
 	color: #000
 	text-decoration: none
+	user-select: none
 
 .collections__img-box
 	width: 120px
 	height: 120px
 	overflow: hidden
+	@media (max-width: 767px)
+		width: 60px
+		height: 60px
+
+.collections__img
+	@media (max-width: 767px)
+		width: 60px
+		height: 60px
 
 .collections__item
 	position: relative
@@ -63,6 +72,7 @@
 
 .collections__discount
 	position: absolute
+	font-weight: bold
 	top: -10px
 	right: -10px
 	width: 50px
@@ -75,6 +85,14 @@
 	border-radius: 50%
 	transform: scale(0)
 	transition: all .5s
+	@media (max-width: 1024px)
+		transform: scale(1)
+	@media (max-width: 767px)
+		width: 33px
+		height: 33px
+		top: -15px
+		right: -5px
+		font-size: 12px
 
 .collections__list:hover .collections__discount
 	transform: scale(1)
@@ -85,6 +103,11 @@
 .collections__row
 	display: flex
 	flex-wrap: wrap
+
+.collections--offerset
+	padding-bottom: 55px
+	@media (max-width: 767px)
+		padding-bottom: 17px
 
 .collections__row .collections__box
 	width: calc(50% - 10px)

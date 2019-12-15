@@ -21,11 +21,29 @@ button:focus
 	width: 100%
 	max-width: 1024px
 	margin: 0 auto
+	@media (max-width: 1024px)
+		padding-left: 12px
+		padding-right: 12px
+	@media (max-width: 767px)
+		padding-left: 8px
+		padding-right: 8px
+
+.container--small
+	width: 100%
+	max-width: 750px
+	margin: 0 auto
 
 h1
 	font-size: 48px
 	line-height: 52px
 	font-weight: 500
+	@media (max-width: 767px)
+		font-size: 30px
+		line-height: 38px
+
+.h1--narrow
+	max-width: 680px
+	margin: 0 auto
 
 h2
 	font-size: 32px
