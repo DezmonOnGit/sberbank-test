@@ -1,0 +1,27 @@
+.breadcrumbs__inner
+	text-align: center
+
+.breadcrumbs__link
+	display: inline-block
+	color: #7E7E7E
+	font-size: 14px
+	line-height: 20px
+	position: relative
+	padding-right: 7px
+	
+.breadcrumbs__link::after
+	content: ''
+	position: absolute
+	width: 2px
+	height: 2px
+	background-color: #7e7e7e
+	border-radius: 50%
+	right: 0
+	top: 50%
+	transform: translateY(-50%)
+
+.breadcrumbs__link:last-child
+	padding-right: 0
+
+.breadcrumbs__link:last-child::after
+	content: none
