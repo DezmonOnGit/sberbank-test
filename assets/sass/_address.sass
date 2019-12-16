@@ -1,5 +1,7 @@
 .address
-	margin-bottom: 360px	
+	margin-bottom: 360px
+	@media (max-width: 1024px)
+		margin-bottom: 250px	
 	
 .address__partner	
 	position: relative
@@ -7,6 +9,17 @@
 .address__img-box
 	position: absolute
 	left: -63px
+	@media (max-width: 1024px)
+		width: 47px
+		height: 47px
+		left: -40px
+	@media (max-width: 991px)
+		left: 25px
+		top: -4px
+
+.address__img
+	width: 100%
+	height: 100%
 
 .address__info
 	padding: 0 0.9em
@@ -17,6 +30,8 @@
 	font-weight: 500
 	line-height: 40px
 	margin-bottom: 24px
+	@media (max-width: 991px)
+		padding-left: 55px
 
 .address__metro
 	position: relative
@@ -49,9 +64,27 @@
 	color: #000000
 	text-decoration: none
 
+.address__phone--desktop
+	@media (max-width: 768px)
+		display: none
+
+.address__phone--mobile
+	display: none
+	@media (max-width: 767px)
+		display: block
+
 .address__link
 	padding-top: 4px
 	color: #00D36D
+
+.address__link--mobile
+	display: none
+	@media (max-width: 767px)
+		display: block
+
+.address__link--desktop
+	@media (max-width: 768px)
+		display: none
 
 .address .map
 	position: absolute
@@ -59,3 +92,6 @@
 	top: -36px
 	width: 420px
 	height: 531px
+	@media (max-width: 1024px)
+		width: 341px
+		height: 432px

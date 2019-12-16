@@ -1,17 +1,35 @@
 .footer
     padding-top: 40px
-    border-top: 1px solid #00D36D
+    border-top: 1px solid #e2e2e2
+    @media (max-width: 575px)
+        padding-top: 24px
 
 .footer__row
     display: flex
     align-items: center
     margin-bottom: 24px
+    @media (max-width: 575px)
+        flex-direction: column    
 
 .footer__left
     min-width: 180px
+    @media (max-width: 1199px)
+        min-width: 140px
+
+.footer__left--empty
+    @media (max-width: 767px)
+        display: none
+
+.footer__phone
+    @media (max-width: 575px)
+        display: flex
+        justify-content: center
+        align-items: center
 
 .footer__phoneLink
     display: block
+    @media (max-width: 575px)
+        margin-right: 15px
 
 .footer__apps
     display: flex
@@ -21,6 +39,9 @@
     width: 100px
     margin-right: 15px
 
+.footer__app:last-child
+    margin-right: 0
+
 .footer__appImg
     width: 100%
 
@@ -29,10 +50,22 @@
     align-items: center
     justify-content: flex-end
     width: 100%
+    @media (max-width: 575px)
+        justify-content: center
+        margin-top: 10px
 
 .footer__soc
     width: 40px
     height: 40px
+    margin-left: 10px
+    transition: all .5s ease-in
+
+.footer__soc:first-child
+    margin-left: 0
+
+.footer__soc:hover,
+.footer__soc:focus
+    transform: scale(1.1)
 
 .footer__socImg
     width: 100%
@@ -41,9 +74,55 @@
     flex-wrap: nowrap
     justify-content: space-between
     width: 100%
+    @media (max-width: 1024px)
+        flex-wrap: wrap
+        justify-content: flex-start
+    @media (max-width: 575px)
+        flex-direction: column
 
 .footer .menu__item
-    padding: 15px 5px
+    padding: 0 5px
+    @media (max-width: 575px)
+        text-align: center
 
 .footer .menu__link
     font-size: 16px
+
+.footer__phoneLink
+    text-decoration: none
+
+.footer__phoneSvg
+    transition: all .5s ease-in 
+
+.footer__phoneLink:hover .footer__phoneSvg,
+.footer__phoneLink:focus .footer__phoneSvg
+    fill: #00D36D
+
+.footer__phoneText
+    color: #000000
+    font-size: 24px
+    font-weight: 500
+    transition: all .5s ease-in
+
+.footer__phoneLink:hover .footer__phoneText,
+.footer__phoneLink:focus .footer__phoneText
+    color: #00D36D
+
+.footer__phoneInfo
+    white-space: nowrap
+    font-size: 14px
+    margin-top: -5px
+    display: block
+    @media (max-width: 1199px)
+        white-space: normal
+
+.footer__copyright
+    font-size: 14px
+
+.footer__disclaimer
+    font-size: 14px
+    @media (max-width: 575px)
+        flex-direction: column
+        max-width: 320px
+        text-align: center
+        margin-top: 10px
