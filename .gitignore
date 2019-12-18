@@ -1,1 +1,10 @@
-/.idea
+/.idea/
+.git/
+/bitrix
+/bitrix/
+/upload
+/upload/
+/images
+/images/
+*.log
+*.tar
