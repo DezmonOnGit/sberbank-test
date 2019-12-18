@@ -358,6 +358,37 @@ $(function () {
             $.magnificPopup.close();
         });
     }
+
+    //user city
+    if($('.user__city').length) {
+       $(document).on('click', '.user__city .bar__balloon .button__accept', function () {
+          var self = $(this);
+          var wrapper = self.closest('.user__city');
+
+           wrapper.removeClass('balloon--opened');
+       });
+
+       //balloon
+        var balloonOpener = $('.user__city').find('.balloon__opener');
+        var ballonCityBtn = $('.user__city').find('.button__change');
+
+       if($(window).innerWidth() <= 1024) {
+           balloonOpener.removeClass('balloon__opener--hover');
+           balloonOpener.on('click', toggleBallon);
+           ballonCityBtn.on('click', toggleBallon);
+       }
+
+        $(window).resize(function () {
+            if($(window).innerWidth() <= 1024) {
+                balloonOpener.on('click', toggleBallon);
+                ballonCityBtn.on('click', toggleBallon);
+            } else {
+                balloonOpener.off('click', toggleBallon);
+                ballonCityBtn.off('click', toggleBallon);
+            }
+        });
+    }
+
 });
 
 
@@ -421,5 +452,15 @@ function toggleMenuInnerHover(flag) {
     } else {
         items.removeClass('menu__item-inner--hover-opener');
     }
+}
 
+function toggleBallon() {
+    var balloonOpener = $(this);
+    var wrapper = balloonOpener.closest('.user__city');
+
+    if(wrapper.hasClass('balloon--opened')) {
+        wrapper.removeClass('balloon--opened');
+    } else {
+        wrapper.addClass('balloon--opened');
+    }
 }
