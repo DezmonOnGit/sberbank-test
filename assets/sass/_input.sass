@@ -1,4 +1,5 @@
-.input__checkbox
+.input__checkbox,
+.input__radio
 	display: none
 
 .input__switcher
@@ -30,5 +31,68 @@
 
 .input__checkbox:checked ~ .switcher__text.switcher__item--order-3
 	color: #000
+
+.input-box__label
+	cursor: pointer
+
+.input-box__label--radio
+	padding-left: 35px
+	position: relative
+
+.input__radio-box
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	position: absolute
+	top: 0
+	left: 5px
+	border: 1px solid #999
+	transition: all .3s
+
+.input__radio-box:after
+	content: ''
+	width: 10px
+	height: 10px
+	border-radius: 50%
+	position: absolute
+	top: calc(50% - 5px)
+	left: calc(50% - 5px)
+	background-color: #999
+	transform: scale(0)
+	transition: all .3s
+
+.input-box__label--radio:hover .input__radio-box:after
+	transform: scale(1)
+
+.input__radio:checked + .input__radio-box
+	border-color: #00D36D
+
+.input__radio:checked + .input__radio-box:after
+	background-color: #00D36D
+	transform: scale(1)
+
+.input__t-text
+	border: 0
+	width: 300px
+	height: 50px
+	font-size: 16px
+	font-family: "Geometria", "Arial", sans-serif
+	padding: 5px 15px
+	border-bottom: 1px solid #999
+	transition: all .3s
+
+.input__t-text:hover,
+.input__t-text:focus
+	outline: 0
+	border-bottom-color: #00D36D
+
+.input-box__city
+	margin-right: 30px
+
+.input-box__city .input__t-text
+	width: 500px
+
+
+
 
 
