@@ -39,6 +39,9 @@
 .map__wrapper
 	position: relative
 	top: -200px
+	@media (max-width: 767px)
+		position: absolute
+		top: 150px
 
 #map-offer
 	border-radius: 8px
@@ -51,6 +54,8 @@
 	height: 531px
 	background: url(../img/map-mask.png)
 	z-index: 2
-	@media (max-width: 1024px)
-		width: 341px
+	@media (max-width: 1023px)
+		width: 260px
 		height: 432px
+	@media (max-width: 767px)
+		display: none
