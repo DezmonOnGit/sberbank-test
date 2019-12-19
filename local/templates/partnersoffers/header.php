@@ -14,6 +14,7 @@
     ?>
 </head>
 <body>
+<? bxApp()->ShowPanel() ?>
 <header class="header">
     <div class="header__inner container">
         <div class="header__row">
@@ -85,4 +86,3 @@
                 <h1><?php bxApp()->ShowTitle() ?></h1>
             </div>
         </div>
-        <div class="main__item <?php bxApp()->ShowProperty('main_item_class') ?>">

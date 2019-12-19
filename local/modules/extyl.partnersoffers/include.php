@@ -27,6 +27,14 @@ if ( ! function_exists('bxApp')) {
     }
 }
 
+if ( ! function_exists('bxCacheManager')) {
+    function bxCacheManager ()
+    {
+        global $CACHE_MANAGER;
+        return $CACHE_MANAGER;
+    }
+}
+
 if (ADMIN_SECTION !== true) {
     partnersoffers()::initFacades();
 }

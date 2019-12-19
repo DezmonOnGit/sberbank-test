@@ -1,4 +1,4 @@
-</div></div>
+</div>
 </main>
 
 <script src="/assets/js/jquery-3.4.1.min.js"></script>
