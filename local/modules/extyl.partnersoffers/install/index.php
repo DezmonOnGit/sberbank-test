@@ -1,5 +1,6 @@
 <?php
 use Bitrix\Main\Localization\Loc;
+use Bitrix\Main\EventManager;
 
 require_once __DIR__ . '/../include.php';
 
@@ -83,14 +84,14 @@ class extyl_partnersoffers extends \CModule
         $this->installFiles();
         RegisterModule($this->MODULE_ID);
 
-        EventManager::registerEventHandler('main', 'OnProlog', $this->MODULE_ID);
+        EventManager::getInstance()->registerEventHandler('main', 'OnProlog', $this->MODULE_ID);
     }
 
     public function DoUninstall()
     {
         $this->uninstallFiles();
 
-        EventManager::unRegisterEventHandler('main', 'OnProlog', $this->MODULE_ID);
+        EventManager::getInstance()->unRegisterEventHandler('main', 'OnProlog', $this->MODULE_ID);
 
         UnRegisterModule($this->MODULE_ID);
     }
