@@ -298,7 +298,50 @@ $(function () {
     }
 
     //search
-    if($('.search__opener').length) {
+    if($('.search').length) {
+        var search = {};
+        search.wrapper = $('.search');
+        search.header = search.wrapper.closest('.header');
+        search.btnOpener = search.wrapper.find('.search__btn--opener');
+        search.inner = search.wrapper.find('.search__inner');
+
+        search.calcInnerOffset = function() {
+            if(search.header.length) {
+                search.inner.css({
+                    top: search.header.innerHeight(),
+                });
+            }
+        };
+
+        search.showInner = function() {
+            search.inner.slideDown();
+            search.inner.addClass('search__inner--open');
+        };
+
+        search.hideInner = function() {
+            search.inner.slideUp(function () {
+                search.inner.removeClass('search__inner--open');
+            });
+        };
+
+        search.init = function() {
+            search.calcInnerOffset();
+
+            $(window).resize(function () {
+                search.calcInnerOffset();
+            });
+
+            search.btnOpener.on('click', function () {
+                if(search.inner.hasClass('search__inner--open')) {
+                    search.hideInner();
+                } else {
+                    search.showInner();
+                }
+            });
+        };
+
+        search.init();
+
         $('.search__opener').on('click', function () {
            var self = $(this);
            var header = self.closest('.header');
@@ -310,6 +353,7 @@ $(function () {
                headerSearch.addClass('opened');
            }
         });
+
     }
 
     //link download
@@ -372,21 +416,8 @@ $(function () {
         var balloonOpener = $('.user__city').find('.balloon__opener');
         var ballonCityBtn = $('.user__city').find('.button__change');
 
-       if($(window).innerWidth() <= 1024) {
-           balloonOpener.removeClass('balloon__opener--hover');
-           balloonOpener.on('click', toggleBallon);
-           ballonCityBtn.on('click', toggleBallon);
-       }
-
-        $(window).resize(function () {
-            if($(window).innerWidth() <= 1024) {
-                balloonOpener.on('click', toggleBallon);
-                ballonCityBtn.on('click', toggleBallon);
-            } else {
-                balloonOpener.off('click', toggleBallon);
-                ballonCityBtn.off('click', toggleBallon);
-            }
-        });
+        balloonOpener.on('click', toggleBallon);
+        ballonCityBtn.on('click', toggleBallon);
     }
 
 });
