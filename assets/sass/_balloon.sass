@@ -9,15 +9,16 @@
 	padding-top: 15px
 	transform: scale(0)
 	opacity: 0
+	z-index: 100
 	transition: all .5s
 	@media(max-width: 1440px)
 		left: auto
 		right: 0
-	@media(max-width: 1024px)
+	@media(max-width: 1023px)
 		left: 0
 		right: auto
 
-.balloon__opener--hover .balloon__inner:hover,
+.balloon__opener--hover + .balloon__inner:hover,
 .balloon__opener--hover:hover .balloon__inner,
 .balloon__opener--hover:hover + .balloon__inner,
 .balloon__opener--hover .balloon__inner,
@@ -29,7 +30,7 @@
 	padding: 20px 25px
 	background-color: #f5f5f5
 	border-radius: 5px
-	@media(max-width: 1024px)
+	@media(max-width: 1023px)
 		padding: 10px 15px
 
 
@@ -45,10 +46,13 @@
 	@media(max-width: 1440px)
 		left: auto
 		right: 60px
-	@media(max-width: 1024px)
+	@media(max-width: 1023px)
 		right: auto
 		left: 50px
 
 .balloon__city
 	font-size: 24px
 	margin-bottom: 20px
+
+.balloon__opener
+	cursor: pointer
