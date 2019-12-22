@@ -19,6 +19,7 @@ class Filter
 
     protected $category = 'all';
     protected $chargeAccept = 'charge';
+    protected $city = null;
 
     protected function __construct() {}
     protected function __clone() {}
@@ -37,6 +38,7 @@ class Filter
             }
             static::$_instance->category = $_SESSION['partners_filter']['category'];
             static::$_instance->chargeAccept = $_SESSION['partners_filter']['charge_accept'];
+            static::$_instance->city = $_SESSION['partners_filter']['city'];
         }
         return static::$_instance;
     }
@@ -46,17 +48,26 @@ class Filter
         $_SESSION['partners_filter'] = [
             'category' => static::getInstance()->category,
             'charge_accept' => static::getInstance()->chargeAccept,
+            'city' => static::getInstance()->city,
         ];
     }
 
     public static function setCategory($category)
     {
         static::getInstance()->category = $category;
+        static::setSessionData();
     }
 
     public static function setChargeAccept($chargeAccept)
     {
         static::getInstance()->chargeAccept = $chargeAccept;
+        static::setSessionData();
+    }
+
+    public static function setCity($city)
+    {
+        static::getInstance()->city = $city;
+        static::setSessionData();
     }
 
     public static function getCategory()
@@ -67,5 +78,10 @@ class Filter
     public static function getChargeAccept()
     {
         return static::getInstance()->chargeAccept;
+    }
+
+    public static function getCity()
+    {
+        return static::getInstance()->city;
     }
 }

@@ -15,3 +15,11 @@ $res = \Bitrix\Iblock\ElementTable::getList([
 ]);
 
 $arResult['CATEGORIES'] = $res->fetchAll();
+
+$GLOBALS['partnersFilter'] = ['=ID' => \Extyl\Spasibo\Partners\Main\PartnersAccess::getAvailablePartners()];
+$partnersFilter = &$GLOBALS['partnersFilter'];
+global $partnersFilter;
+
+$GLOBALS['offersFilter'] = ['=ID' => \Extyl\Spasibo\Partners\Main\PartnersAccess::getAvailableOffers()];
+$offersFilter = $GLOBALS['offersFilter'];
+global $offersFilter;

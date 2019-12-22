@@ -182,11 +182,18 @@ class JsonReply
      * @param bool $a
      *
      * @return $this
+     * @deprecated
      */
     public function setStatus($a)
     {
         $this->status = $a;
 
+        return $this;
+    }
+
+    public function status(bool $status)
+    {
+        $this->status = $status;
         return $this;
     }
 
@@ -253,7 +260,7 @@ class JsonReply
             'errors' => $errors,
             'html' => $this->config(static::CONFIG_GET_HTML_OUTPUT) ? ob_get_clean() : null,
         ];
-
+//        dd($this);
         ob_clean();
         header('Content-type: application/json; charset=UTF-8');
         http_response_code($code);

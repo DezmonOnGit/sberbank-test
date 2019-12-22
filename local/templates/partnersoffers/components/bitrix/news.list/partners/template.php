@@ -20,17 +20,19 @@ $this->setFrameMode(false);
 	<?
 	$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-//	dd($arItem);
 	?>
         <a href="<?= $arItem['DETAIL_PAGE_URL'] ?>" class="news-item cards__item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
-            <div class="title title__cards">1.5%</div>
-            <div class="prompt prompt__cards">Спасибо от суммы покупки</div>
+            <div class="title title__cards"><?= $arItem['DISPLAY_PERCENT'] ?: '&nbsp;' ?></div>
+            <div class="prompt prompt__cards"><?= $arItem['DISPLAY_PERCENT_TEXT'] ?: '&nbsp;<br>&nbsp;' ?></div>
             <div class="cards__img-box">
                 <img class="cards__img" src="<?= $arItem['PREVIEW_PICTURE']['SRC'] ?>" alt="cards-1">
             </div>
             <div class="cards__name"><?= $arItem['NAME'] ?></div>
         </a>
 <?endforeach;?>
+<? if ( ! $arResult['ITEMS']): ?>
+    <h4>В этой категории пока ничего нет =(</h4>
+<? endif; ?>
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>

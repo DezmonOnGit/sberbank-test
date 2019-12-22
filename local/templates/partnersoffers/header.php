@@ -13,6 +13,7 @@
 
         Bitrix\Main\Page\Asset::getInstance()->addCss('/assets/css/owl.carousel.min.css');
         Bitrix\Main\Page\Asset::getInstance()->addCss('/assets/css/bundle.css');
+        Bitrix\Main\Page\Asset::getInstance()->addCss('/assets/css/custom.css');
         Bitrix\Main\Page\Asset::getInstance()->addJs('/assets/js/extyl.js');
     ?>
 </head>

@@ -14,14 +14,15 @@ $this->setFrameMode(false);
 
 use Extyl\Spasibo\Partners\Main\Filter;
 use Extyl\Spasibo\Partners\Main\Page\AjaxTool; ?>
-<div class="filter filter--offsets" <?= AjaxTool::setTags('partner-filter-cat') ?>>
-    <? AjaxTool::startArea() ?>
+<div <?= AjaxTool::setTags('partner-filter-cat') ?>>
+<? AjaxTool::startArea() ?>
+<div class="filter filter--offsets">
     <div class="filter__inner container">
         <div class="filter__item">
-            <button class="button button--theme-white <?= (Filter::getCategory() === Filter::CAT_ALL) ? 'button--active' : '' ?>" type="button">Все партнеры</button>
+            <button class="button button--theme-white <?= (Filter::getCategory() === Filter::CAT_ALL) ? 'button--active' : '' ?>" data-cat-id="all" type="button">Все партнеры</button>
         </div>
         <div class="filter__item">
-            <button class="button button--theme-white <?= (Filter::getCategory() === Filter::CAT_POPULAR) ? 'button--active' : '' ?>" type="button">Популярные</button>
+            <button class="button button--theme-white <?= (Filter::getCategory() === Filter::CAT_POPULAR) ? 'button--active' : '' ?>" data-cat-id="popular" type="button">Популярные</button>
         </div>
         <? foreach ($arResult['CATEGORIES'] as $cat): ?>
         <div class="filter__item">
@@ -29,16 +30,17 @@ use Extyl\Spasibo\Partners\Main\Page\AjaxTool; ?>
         </div>
         <? endforeach; ?>
     </div>
-    <script>Extyl.PartnersFilter.init()</script>
-    <? AjaxTool::endArea() ?>
 </div>
 <div class="switcher switcher--offsets switcher__filter">
     <div class="switcher__inner container">
         <div class="input-box input-box__switcher switcher__items">
-            <input id="switcher-1" class="input input__checkbox" type="checkbox">
+            <input id="switcher-1" class="input input__checkbox" type="checkbox" <?= Filter::getChargeAccept() === Filter::ACCEPT ? 'checked' : '' ?>>
             <label class="switcher__item switcher__item--order-2 input__switcher" for="switcher-1"></label>
             <div class="switcher__item switcher__item--order-1 switcher__text">Начисляют спасибо</div>
             <div class="switcher__item switcher__item--order-3 switcher__text">Принимают спасибо</div>
         </div>
     </div>
+</div>
+    <script>Extyl.PartnersFilter.init()</script>
+    <? AjaxTool::endArea() ?>
 </div>

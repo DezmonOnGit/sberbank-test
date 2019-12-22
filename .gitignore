@@ -8,3 +8,5 @@
 /images/
 *.log
 *.tar
+/local/vendor/
+/local/vendor
