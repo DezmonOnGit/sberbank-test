@@ -3,7 +3,7 @@
     'init' => [
         'iblock' => 'sber_partners',
     ],
-    'commit' => '71c9b533fff5f5ca84ca734360d1622a',
+    'commit' => '8e9d2c7ff10363f5459daf9875e2710e',
     'entity' => 'DbVersion\\EntityTypes\\Iblock\\Iblock',
     'module' => 'iblock',
     'data' => [
@@ -13,8 +13,8 @@
         'NAME' => 'Партнёры',
         'ACTIVE' => 'Y',
         'SORT' => '500',
-        'LIST_PAGE_URL' => '#SITE_DIR#/partnersoffers/index.php?ID=#IBLOCK_ID#',
-        'DETAIL_PAGE_URL' => '#SITE_DIR#/partnersoffers/detail.php?ID=#ELEMENT_ID#',
+        'LIST_PAGE_URL' => '#SITE_DIR#/partners/',
+        'DETAIL_PAGE_URL' => '#SITE_DIR#/partners/#ELEMENT_ID#/',
         'SECTION_PAGE_URL' => '#SITE_DIR#/partnersoffers/list.php?SECTION_ID=#SECTION_ID#',
         'CANONICAL_PAGE_URL' => '',
         'PICTURE' => null,
@@ -28,7 +28,7 @@
         'SECTION_CHOOSER' => 'L',
         'LIST_MODE' => '',
         'RIGHTS_MODE' => 'S',
-        'SECTION_PROPERTY' => null,
+        'SECTION_PROPERTY' => 'Y',
         'PROPERTY_INDEX' => null,
         'LAST_CONV_ELEMENT' => '0',
         'EDIT_FILE_BEFORE' => '',
@@ -43,7 +43,7 @@
     ],
     'additional' => [
         0 => 'iblock/sber_partners/properties/IS_FEDERAL',
-        1 => 'iblock/sber_partners/properties/IS_ONLINE',
-        2 => 'iblock/sber_partners/properties/IS_POPULAR',
+        1 => 'iblock/sber_partners/properties/IS_POPULAR',
+        2 => 'iblock/sber_partners/properties/IS_ONLINE',
     ],
 ];

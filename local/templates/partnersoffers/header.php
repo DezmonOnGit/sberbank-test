@@ -9,8 +9,11 @@
 <!--    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">-->
 <!--    <link rel="stylesheet" href="/assets/css/bundle.css">-->
     <?php
-        Asset::addCss('/assets/css/owl.carousel.min.css');
-        Asset::addCss('/assets/css/bundle.css');
+        CJSCore::Init(['jquery']);
+
+        Bitrix\Main\Page\Asset::getInstance()->addCss('/assets/css/owl.carousel.min.css');
+        Bitrix\Main\Page\Asset::getInstance()->addCss('/assets/css/bundle.css');
+        Bitrix\Main\Page\Asset::getInstance()->addJs('/assets/js/extyl.js');
     ?>
 </head>
 <body>

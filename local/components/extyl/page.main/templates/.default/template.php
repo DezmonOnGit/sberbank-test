@@ -2,57 +2,261 @@
 /** @var \CBitrixComponentTemplate $this */
 ?>
 <div class="main__item partners partners--offsets">
-    <div class="filter filter--offsets">
-        <div class="filter__inner container">
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Все партнеры</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Популярные</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Супермаркеты</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Кафе и рестораны</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Такси</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Красота</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white button--active" type="button">Электроника и бытовая техника</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Зоотовары</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white" type="button">Кино и театр</button>
-            </div>
-            <div class="filter__item">
-                <button class="button button--theme-white button__more" type="button">• • •</button>
-            </div>
-        </div>
-    </div>
-    <div class="switcher switcher--offsets switcher__filter">
-        <div class="switcher__inner container">
-            <div class="input-box input-box__switcher switcher__items">
-                <input id="switcher-1" class="input input__checkbox" type="checkbox">
-                <label class="switcher__item switcher__item--order-2 input__switcher" for="switcher-1"></label>
-                <div class="switcher__item switcher__item--order-1 switcher__text">Начисляют спасибо</div>
-                <div class="switcher__item switcher__item--order-3 switcher__text">Принимают спасибо</div>
-            </div>
-        </div>
-    </div>
-    <div class="partners__inner cards">
     <?php
-    $APPLICATION->IncludeComponent('bitrix:news', '.default', [], $this);
+    $APPLICATION->IncludeComponent(
+	"bitrix:catalog.filter", 
+	"partners", 
+	array(
+		"COMPONENT_TEMPLATE" => "partners",
+		"IBLOCK_TYPE" => "partnersoffers",
+		"IBLOCK_ID" => "3",
+		"PREFILTER_NAME" => "preFilter",
+		"FILTER_NAME" => "partnersFilter",
+		"FIELD_CODE" => array(
+			0 => "ID",
+			1 => "CODE",
+			2 => "XML_ID",
+			3 => "NAME",
+			4 => "TAGS",
+			5 => "SORT",
+			6 => "PREVIEW_TEXT",
+			7 => "PREVIEW_PICTURE",
+			8 => "DETAIL_TEXT",
+			9 => "DETAIL_PICTURE",
+			10 => "DATE_ACTIVE_FROM",
+			11 => "ACTIVE_FROM",
+			12 => "DATE_ACTIVE_TO",
+			13 => "ACTIVE_TO",
+			14 => "SHOW_COUNTER",
+			15 => "SHOW_COUNTER_START",
+			16 => "IBLOCK_TYPE_ID",
+			17 => "IBLOCK_ID",
+			18 => "IBLOCK_CODE",
+			19 => "IBLOCK_NAME",
+			20 => "IBLOCK_EXTERNAL_ID",
+			21 => "DATE_CREATE",
+			22 => "CREATED_BY",
+			23 => "CREATED_USER_NAME",
+			24 => "TIMESTAMP_X",
+			25 => "MODIFIED_BY",
+			26 => "USER_NAME",
+			27 => "SECTION_ID",
+			28 => "",
+		),
+		"PROPERTY_CODE" => array(
+			0 => "",
+			1 => "IS_ONLINE",
+			2 => "IS_POPULAR",
+			3 => "IS_FEDERAL",
+			4 => "",
+		),
+		"LIST_HEIGHT" => "5",
+		"TEXT_WIDTH" => "20",
+		"NUMBER_WIDTH" => "5",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "36000000",
+		"CACHE_GROUPS" => "Y",
+		"SAVE_IN_SESSION" => "N",
+		"PAGER_PARAMS_NAME" => "arrPager",
+		"PRICE_CODE" => array(
+		)
+	),
+	$this
+);
+    ?>
+    <div class="partners__inner cards" <?= \Extyl\Spasibo\Partners\Main\Page\AjaxTool::setTags('partners-list', 'main') ?>>
+    <?php
+    \Extyl\Spasibo\Partners\Main\Page\AjaxTool::startArea();
+    $a = $APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	"partners",
+	array(
+		"COMPONENT_TEMPLATE" => "partners",
+		"IBLOCK_TYPE" => "partnersoffers",
+		"IBLOCK_ID" => "2",
+		"NEWS_COUNT" => "4",
+		"USE_SEARCH" => "N",
+		"USE_RSS" => "N",
+		"USE_RATING" => "N",
+		"USE_CATEGORIES" => "N",
+		"USE_REVIEW" => "N",
+		"USE_FILTER" => "Y",
+		"FILTER_NAME" => "partnersFilter",
+		"FILTER_FIELD_CODE" => array(
+			0 => "ID",
+			1 => "CODE",
+			2 => "XML_ID",
+			3 => "NAME",
+			4 => "TAGS",
+			5 => "SORT",
+			6 => "PREVIEW_TEXT",
+			7 => "PREVIEW_PICTURE",
+			8 => "DETAIL_TEXT",
+			9 => "DETAIL_PICTURE",
+			10 => "DATE_ACTIVE_FROM",
+			11 => "ACTIVE_FROM",
+			12 => "DATE_ACTIVE_TO",
+			13 => "ACTIVE_TO",
+			14 => "SHOW_COUNTER",
+			15 => "SHOW_COUNTER_START",
+			16 => "IBLOCK_TYPE_ID",
+			17 => "IBLOCK_ID",
+			18 => "IBLOCK_CODE",
+			19 => "IBLOCK_NAME",
+			20 => "IBLOCK_EXTERNAL_ID",
+			21 => "DATE_CREATE",
+			22 => "CREATED_BY",
+			23 => "CREATED_USER_NAME",
+			24 => "TIMESTAMP_X",
+			25 => "MODIFIED_BY",
+			26 => "USER_NAME",
+			27 => "",
+		),
+		"FILTER_PROPERTY_CODE" => array(
+			0 => "IS_ONLINE",
+			1 => "IS_POPULAR",
+			2 => "IS_FEDERAL",
+			3 => "",
+		),
+		"SORT_BY1" => "SORT",
+		"SORT_ORDER1" => "ASC",
+		"SORT_BY2" => "",
+		"SORT_ORDER2" => "",
+		"CHECK_DATES" => "Y",
+		"SEF_MODE" => "Y",
+		"SEF_FOLDER" => "/partners/",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_JUMP" => "Y",
+		"AJAX_OPTION_STYLE" => "Y",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "36000000",
+		"CACHE_FILTER" => "Y",
+		"CACHE_GROUPS" => "N",
+		"SET_LAST_MODIFIED" => "N",
+		"SET_TITLE" => "N",
+		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_ELEMENT_CHAIN" => "N",
+		"USE_PERMISSIONS" => "N",
+		"STRICT_SECTION_CHECK" => "N",
+		"DISPLAY_DATE" => "Y",
+		"DISPLAY_PICTURE" => "Y",
+		"DISPLAY_PREVIEW_TEXT" => "Y",
+		"USE_SHARE" => "N",
+		"PREVIEW_TRUNCATE_LEN" => "",
+		"LIST_ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"LIST_FIELD_CODE" => array(
+			0 => "ID",
+			1 => "CODE",
+			2 => "XML_ID",
+			3 => "NAME",
+			4 => "TAGS",
+			5 => "SORT",
+			6 => "PREVIEW_TEXT",
+			7 => "PREVIEW_PICTURE",
+			8 => "DETAIL_TEXT",
+			9 => "DETAIL_PICTURE",
+			10 => "DATE_ACTIVE_FROM",
+			11 => "ACTIVE_FROM",
+			12 => "DATE_ACTIVE_TO",
+			13 => "ACTIVE_TO",
+			14 => "SHOW_COUNTER",
+			15 => "SHOW_COUNTER_START",
+			16 => "IBLOCK_TYPE_ID",
+			17 => "IBLOCK_ID",
+			18 => "IBLOCK_CODE",
+			19 => "IBLOCK_NAME",
+			20 => "IBLOCK_EXTERNAL_ID",
+			21 => "DATE_CREATE",
+			22 => "CREATED_BY",
+			23 => "CREATED_USER_NAME",
+			24 => "TIMESTAMP_X",
+			25 => "MODIFIED_BY",
+			26 => "USER_NAME",
+			27 => "",
+		),
+		"LIST_PROPERTY_CODE" => array(
+			0 => "IS_ONLINE",
+			1 => "IS_POPULAR",
+			2 => "IS_FEDERAL",
+			3 => "",
+		),
+		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
+		"DISPLAY_NAME" => "Y",
+		"META_KEYWORDS" => "-",
+		"META_DESCRIPTION" => "-",
+		"BROWSER_TITLE" => "-",
+		"DETAIL_SET_CANONICAL_URL" => "N",
+		"DETAIL_ACTIVE_DATE_FORMAT" => "d.m.Y",
+		"DETAIL_FIELD_CODE" => array(
+			0 => "ID",
+			1 => "CODE",
+			2 => "XML_ID",
+			3 => "NAME",
+			4 => "TAGS",
+			5 => "SORT",
+			6 => "PREVIEW_TEXT",
+			7 => "PREVIEW_PICTURE",
+			8 => "DETAIL_TEXT",
+			9 => "DETAIL_PICTURE",
+			10 => "DATE_ACTIVE_FROM",
+			11 => "ACTIVE_FROM",
+			12 => "DATE_ACTIVE_TO",
+			13 => "ACTIVE_TO",
+			14 => "SHOW_COUNTER",
+			15 => "SHOW_COUNTER_START",
+			16 => "IBLOCK_TYPE_ID",
+			17 => "IBLOCK_ID",
+			18 => "IBLOCK_CODE",
+			19 => "IBLOCK_NAME",
+			20 => "IBLOCK_EXTERNAL_ID",
+			21 => "DATE_CREATE",
+			22 => "CREATED_BY",
+			23 => "CREATED_USER_NAME",
+			24 => "TIMESTAMP_X",
+			25 => "MODIFIED_BY",
+			26 => "USER_NAME",
+			27 => "",
+		),
+		"DETAIL_PROPERTY_CODE" => array(
+			0 => "IS_ONLINE",
+			1 => "IS_POPULAR",
+			2 => "IS_FEDERAL",
+			3 => "",
+		),
+		"DETAIL_DISPLAY_TOP_PAGER" => "N",
+		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
+		"DETAIL_PAGER_TITLE" => "Страница",
+		"DETAIL_PAGER_TEMPLATE" => "",
+		"DETAIL_PAGER_SHOW_ALL" => "N",
+		"PAGER_TEMPLATE" => ".default",
+		"DISPLAY_TOP_PAGER" => "N",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
+		"PAGER_TITLE" => "Новости",
+		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+		"PAGER_SHOW_ALL" => "N",
+		"PAGER_BASE_LINK_ENABLE" => "N",
+		"SET_STATUS_404" => "Y",
+		"SHOW_404" => "N",
+		"FILE_404" => "",
+		"SEF_URL_TEMPLATES" => array(
+			"news" => "",
+			"section" => "",
+			"detail" => "#ELEMENT_ID#/",
+		)
+	),
+	$this
+);
+    \Extyl\Spasibo\Partners\Main\Page\AjaxTool::endArea();
     ?>
     </div>
 </div>
-<div class="main__item offers offers--offsets">
+<div class="main__item offers offers--offsets"<?= \Extyl\Spasibo\Partners\Main\Page\AjaxTool::setTags('offers-list', 'main') ?>>
+    <? \Extyl\Spasibo\Partners\Main\Page\AjaxTool::startArea() ?>
     <div class="title title--center title__offers">
         <div class="title__inner container">
             <h2>3 предложения в категории «Электроника и бытовая техника»</h2>
@@ -98,6 +302,7 @@
             </a>
         </div>
     </div>
+    <? \Extyl\Spasibo\Partners\Main\Page\AjaxTool::endArea() ?>
 </div>
 <div class="main__item collections">
     <div class="collections__inner container">
