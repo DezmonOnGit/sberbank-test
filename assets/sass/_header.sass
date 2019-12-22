@@ -5,11 +5,35 @@
 	position: relative
 	z-index: 10
 
+.header__menu
+	width: 60%
+	margin-right: auto
+	@media (max-width: 1023px)
+		width: 100vw
+		padding: 10px 15px
+		background-color: #fff
+		position: fixed
+		left: 0
+		top: 0
+		transform: translateX(-100%)
+		opacity: 0
+		visibility: hidden
+		overflow-y: auto
+		transition: all .5s
+
+.header__menu--opened
+	transform: translateX(0)
+	opacity: 1
+	visibility: visible
+
 .header__info
 	padding: 15px 0
 	@media (max-width: 1023px)
+		flex: 1
 		display: flex
 		align-items: center
+	@media (max-width: 767px)
+		flex: none
 
 .header__phone
 	position: relative
@@ -18,6 +42,8 @@
 	display: none
 	@media (max-width: 1023px)
 		display: block
+	@media (max-width: 767px)
+		display: none
 
 .header__phone .icon--phone
 	position: absolute
@@ -28,6 +54,42 @@
 	display: flex
 	flex-wrap: wrap
 	justify-content: flex-end
+	@media (max-width: 1023px)
+		margin-left: auto
 
 .header__btns .search__outer
 	margin-right: 15px
+
+.header__info .user__bonuses
+	@media (max-width: 1023px)
+		display: none
+
+.header__info .link__login
+	@media (max-width: 1023px)
+		display: none
+
+.header__info .user__city
+	@media (max-width: 767px)
+		display: none
+
+.header__row > .user__bonuses
+	@media (max-width: 767px)
+		align-self: center
+		margin-bottom: 0
+		font-size: 14px
+
+.header__row > .user__bonuses .user__count
+	@media (max-width: 767px)
+		display: block
+		position: relative
+		white-space: nowrap
+		max-width: 75px
+		overflow-x: hidden
+		text-overflow: ellipsis
+		padding-right: 20px
+
+.header__row > .user__bonuses .icon--coin
+	@media (max-width: 767px)
+		position: absolute
+		top: 2px
+		right: 0

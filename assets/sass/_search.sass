@@ -1,11 +1,14 @@
 .search__inner
 	display: none
 	position: absolute
-	left: calc(-1 * (100vw - 1000px) / 2)
+	left: calc(-1 * (100vw - 1024px) / 2)
 	right: 0
-	width: 100vw
+	width: calc(100vw - 9px)
 	background-color: #fff
 	padding: 15px 20px
+	@media(max-width: 1024px)
+		width: 100vw
+		left: -12px
 
 .search__btn
 	display: inline-block
@@ -21,6 +24,11 @@
 
 .search__result .cards__item
 	color: #000
+	@media (max-width: 767px)
+		margin-bottom: 20px
+	@media (max-width: 575px)
+		width: 100%
+		margin-right: 0
 
 .search__result .cards__item .cards__name
 	align-self: center
