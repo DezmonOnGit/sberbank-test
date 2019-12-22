@@ -214,7 +214,7 @@
             </div>
         </main>
 
-        <div id="partner-addresses" class="modal">
+        <div id="partner-addresses" class="modal mfp-hide">
             <div class="modal__inner">
                 <div class="modal__dismiss-box">
                     <a class="modal__dismiss" href="javascript: void(0);">❌</a>
@@ -224,15 +224,20 @@
                         <h3>Адреса магазинов</h3>
                     </div>
                 </div>
-                <div class="map map--box map--box-large map__addresses">
+                <div class="map map--box map--list map--box-large map__addresses">
                     <div id="map-addresses" class="map__inner"></div>
+                    <div class="map__list-box">
+                        <div class="title title__map-list">
+                            <h4>Адреса магазинов:</h4>
+                        </div>
+                        <ul class="map__list"></ul>
+                    </div>
                 </div>
+
             </div>
         </div>
 
         <script src="assets/js/jquery-3.4.1.min.js"></script>
-        <script src="assets/js/link-download-polyfill.js"></script>
-        <script src="assets/js/owl.carousel.min.js"></script>
         <script src="https://api-maps.yandex.ru/2.1/?apikey=a1931c95-89dc-4a31-8a1d-53f34c152789&load=package.full&lang=ru_RU" type="text/javascript"></script>
         <script src="assets/js/map.js"></script>
         <script src="assets/js/magnific-popup.min.js"></script>
