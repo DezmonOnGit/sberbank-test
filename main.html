@@ -14,10 +14,30 @@
     <header class="header">
         <div class="header__inner container">
             <div class="header__row">
+                <div class="user user__bonuses user--xs-mobile">
+                    <span class="user__count">95 <i class="icon icon--coin"></i></span>
+                </div>
                 <a href="#" class="logo logo--main logo__header">
                     <img class="logo__img" src="assets/img/logo.svg" alt="logo">
                 </a>
-                <nav class="menu menu__header">
+                <div class="header__menu">
+                    <div class="bar bar__header-menu bar--mobile">
+                        <div class="bar__item">
+                            <div class="user user__bonuses">
+                                <span class="user__count">95</span>
+                                <span class="user__text">Бонусов</span>
+                            </div>
+                        </div>
+                        <div class="bar__item">
+                            <div class="user user__city user--xs-mobile">
+                                <a href="#choose-city" class="link link--modal-opener"><i class="icon icon--mobile icon--mark-2"></i>Санкт-Петербург</a>
+                            </div>
+                        </div>
+                        <div class="bar__item">
+                            <a href="" class="link link__login link--disabled">Войти</a>
+                        </div>
+                    </div>
+                    <nav class="menu menu__header">
                     <div class="menu__item menu__item--disabled">
                         <a href="#" class="menu__link link">Купоны и сертификаты</a>
                     </div>
@@ -49,6 +69,7 @@
                         <a href="#" class="menu__link link">Партнеры</a>
                     </div>
                 </nav>
+                </div>
                 <div class="header__info">
                     <div class="user user__bonuses">
                         <span class="user__count">95</span>
@@ -129,6 +150,9 @@
                             </div>
                         </div>
                         <a href="" class="link link__login link--disabled">Войти</a>
+                        <button class="button button__burger button--mobile" type="button">
+                            <span class="button__burger-line"></span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -641,6 +665,7 @@
 
     <script src="assets/js/jquery-3.4.1.min.js"></script>
     <script src="assets/js/magnific-popup.min.js"></script>
+    <script src="assets/js/filter.js"></script>
     <script src="assets/js/custom.js"></script>
 </body>
 </html>

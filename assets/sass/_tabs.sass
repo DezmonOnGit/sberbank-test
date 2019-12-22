@@ -2,6 +2,16 @@
 	display: flex
 	flex-wrap: wrap
 	margin-bottom: 30px
+	@media (max-width: 767px)
+		flex-wrap: nowrap
+		overflow: auto
+
+.tabs__nav .button__tabs-nav
+	@media (max-width: 767px)
+		white-space: nowrap
+
+.tabs__nav .button__tabs-nav:hover
+	border: 1px solid #000
 
 .tabs__partners
 	margin-bottom: 20px
@@ -11,3 +21,12 @@
 
 .tabs__item--active
 	display: block
+
+.tabs__offers .offers__inner
+	@media (max-width: 767px)
+		flex-direction: column
+		align-items: center
+
+.tabs__offers .offers__inner .cards__item[data-cards-in-row="2"]
+	@media (max-width: 767px)
+		width: 300px

@@ -87,10 +87,16 @@
 	border-bottom-color: #00D36D
 
 .input-box__city
+	flex: 1
 	margin-right: 30px
+	@media (max-width: 575px)
+		width: 100%
+		margin-right: 0
+		margin-bottom: 10px
+		flex: none
 
 .input-box__city .input__t-text
-	width: 500px
+	width: 100%
 
 .input-box--row
 	display: flex
@@ -100,6 +106,9 @@
 	width: calc(100% - 122px)
 	margin-right: 15px
 
+.input-box__city + .button__select
+	@media (max-width: 575px)
+		width: 100%
 
 
 

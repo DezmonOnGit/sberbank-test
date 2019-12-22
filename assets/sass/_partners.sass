@@ -1,8 +1,12 @@
 .partners__inner
 	margin-bottom: 70px
+	@media (max-width: 767px)
+		margin-bottom: 35px
 
 .partners--offsets
 	margin-bottom: 70px
+	@media (max-width: 767px)
+		margin-bottom: 35px
 
 .partners__btns
 	display: flex
@@ -14,6 +18,9 @@
 	height: 70px
 	overflow: hidden
 	margin-right: 15px
+	@media (max-width: 767px)
+		width: 40px
+		height: 40px
 
 .partners__img
 	width: 100%
@@ -27,12 +34,25 @@
 	display: flex
 	flex-wrap: wrap
 	margin-bottom: 30px
+	@media (max-width: 767px)
+		flex-direction: column-reverse
 
 .partners__details .list
 	width: 33.3333%
 	padding-right: 15px
+	@media (max-width: 767px)
+		width: 100%
+		padding-right: 0
+
+.partners__details .list .title__list
+	@media (max-width: 767px)
+		display: none
 
 .partners__footer .link
 	font-size: 14px
 	line-height: 1
+
+.partners .map
+	border-radius: 8px
+	overflow: hidden
 
