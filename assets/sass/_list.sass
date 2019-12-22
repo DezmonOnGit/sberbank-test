@@ -16,9 +16,23 @@
 	width: calc(33.333% - 10px)
 	margin-right: 15px
 	margin-bottom: 25px
+	@media (max-width: 767px)
+		width: calc(50% - 15px)
+		margin-bottom: 25px
+	@media (max-width: 575px)
+		width: 100%
+		margin-right: 0
 
 .list__inner--row[data-item-in-row="3"] .list__item:nth-child(3n+3)
 	margin-right: 0
+	@media (max-width: 767px)
+		margin-right: 15px
+	@media (max-width: 575px)
+		margin-right: 0
+
+.list__inner--row[data-item-in-row="3"] .list__item:nth-child(2n+2)
+	@media (max-width: 767px)
+		margin-right: 0
 
 .list__item:last-child
 	margin-bottom: 0
@@ -71,8 +85,8 @@
 .list__item--highlight
 	background-color: #ebebeb
 
-
-
-
+.list__bonuses .list__text
+	@media (max-width: 767px)
+		font-size: 16px
 
 

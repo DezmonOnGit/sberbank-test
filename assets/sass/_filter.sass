@@ -1,14 +1,21 @@
 .filter--offsets
 	margin-bottom: 45px
+	@media (max-width: 767px)
+		margin-bottom: 30px
 
 .filter__inner
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
+	height: 0
+	overflow: hidden
 	@media (max-width: 767px)
 		flex-wrap: nowrap
 		overflow-x: auto
 		justify-content: flex-start
+
+.filter__row
+	display: flex
 
 .filter__item
 	margin-right: 8px
