@@ -17,16 +17,19 @@
 	color: #000
 	text-decoration: none
 	user-select: none
+	@media (max-width: 767px)
+		justify-content: center
 
 .collections__img-box
 	width: 120px
 	height: 120px
 	overflow: hidden
-	@media (max-width: 767px)
+	@media (max-width: 1023px)
 		width: 60px
 		height: 60px
 
 .collections__img
+	width: 100%
 	@media (max-width: 767px)
 		width: 60px
 		height: 60px
@@ -34,6 +37,8 @@
 .collections__item
 	position: relative
 	margin: 0 15px 15px
+	@media (max-width: 1023px)
+		margin: 0 10px 10px
 
 .collections__name
 	min-width: 195px
@@ -42,6 +47,7 @@
 	line-height: 20px
 	padding: 11px 25px
 	position: relative
+
 
 .collections__name-text
 	max-height: 40px
@@ -62,6 +68,9 @@
 	background-size: cover
 	background-position: center
 	z-index: 5
+	@media (max-width: 1023px)
+		display: none
+
 
 .collections__name:before
 	left: -30px
@@ -87,7 +96,7 @@
 	transition: all .5s
 	@media (max-width: 1024px)
 		transform: scale(1)
-	@media (max-width: 767px)
+	@media (max-width: 1023px)
 		width: 33px
 		height: 33px
 		top: -15px
@@ -103,6 +112,10 @@
 .collections__row
 	display: flex
 	flex-wrap: wrap
+	@media (max-width: 575px)
+		width: 100%
+		flex-direction: column
+		align-items: center
 
 .collections--offerset
 	padding-bottom: 55px
@@ -113,6 +126,11 @@
 	width: calc(50% - 10px)
 	margin-right: 20px
 	margin-bottom: 30px
+	@media (max-width: 767px)
+		width: 100%
+		margin-right: 0
+	@media (max-width: 575px)
+		margin-right: 0
 
 .collections__row .collections__box:nth-child(2n+2)
 	margin-right: 0
