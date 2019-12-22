@@ -5,10 +5,16 @@
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
+	@media (max-width: 767px)
+		flex-wrap: nowrap
+		overflow-x: auto
+		justify-content: flex-start
 
 .filter__item
 	margin-right: 8px
 	margin-bottom: 8px
+	@media (max-width: 767px)
+		white-space: nowrap
 
 .filter__item .button
 	border-radius: 8px
