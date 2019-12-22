@@ -1,7 +1,7 @@
 .address
-	margin-bottom: 360px
+	margin-bottom: 200px
 	@media (max-width: 1023px)
-		margin-bottom: 250px	
+		margin-bottom: 100px	
 	@media (max-width: 767px)
 		position: relative
 		margin-bottom: 46px
@@ -31,7 +31,7 @@
 	height: 100%
 
 .address__info
-	padding: 0 0.9em
+	padding: 0 0.9em 2em
 	line-height: 24px
 	@media (max-width: 767px)
 		padding: 0
@@ -41,17 +41,17 @@
 	font-weight: 500
 	line-height: 40px
 	margin-bottom: 24px
+	padding-left: 40px
 	@media (max-width: 991px)
-		padding-left: 63px
+		padding-left: 150px
 	@media (max-width: 767px)
-		padding-left: 48px
+		padding-left: 75px
 		margin-bottom: 0
 
 .address__data
 	@media (max-width: 991px)
 		padding-left: 63px
 	@media (max-width: 767px)
-		padding-top: 240px
 		padding-left: 8px
 		line-height: 22px
 		font-size: 16px
@@ -114,7 +114,7 @@
 	display: none
 	@media (max-width: 767px)
 		display: block
-		padding-left: 48px
+		padding-left: 6px
 
 .address__link
 	padding-top: 4px
@@ -124,8 +124,7 @@
 	display: none
 	@media (max-width: 767px)
 		display: block
-		padding-left: 48px
-		margin-bottom: 4px
+		padding-left: 6px
 
 .address__link--desktop
 	@media (max-width: 991px)
@@ -133,7 +132,16 @@
 	@media (max-width: 767px)
 		display: none
 
-.address .map
+.address .map__wrapper
+	top: 70px
+	right: -150px
+	@media (max-width: 1023px)
+		right: 0
+	@media (max-width: 767px)
+		width: 100%
+		top: 120px
+
+.address .map__inner
 	position: absolute
 	right: 0
 	top: -36px
@@ -147,3 +155,17 @@
 		right: 8px
 		width: calc(100% - 16px)
 		height: 203px
+
+.address .map--list .map__list-box
+	width: 100%
+	padding-left: 0
+
+.address .map__list
+	width: 55%
+	@media (max-width: 991px)
+		height: 80%
+	@media (max-width: 767px)
+		height: 220px
+		width: 100%
+		margin-top: 270px
+		margin-bottom: 40px
