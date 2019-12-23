@@ -166,21 +166,21 @@ $(function () {
                     controls: []
                 });
 
-                var geolocation = ymaps.geolocation;
-
-                // Сравним положение, вычисленное по ip пользователя и
-                // положение, вычисленное средствами браузера.
-                geolocation.get({
-                    provider: 'yandex',
-                    mapStateAutoApply: true
-                }).then(function (result) {
-                    // Красным цветом пометим положение, вычисленное через ip.
-                    result.geoObjects.options.set('preset', 'islands#redCircleIcon');
-                    result.geoObjects.get(0).properties.set({
-                        balloonContentBody: 'Мое местоположение'
-                    });
-                    addressesMap.geoObjects.add(result.geoObjects);
-                });
+                // var geolocation = ymaps.geolocation;
+                //
+                // // Сравним положение, вычисленное по ip пользователя и
+                // // положение, вычисленное средствами браузера.
+                // geolocation.get({
+                //     provider: 'yandex',
+                //     mapStateAutoApply: true
+                // }).then(function (result) {
+                //     // Красным цветом пометим положение, вычисленное через ip.
+                //     result.geoObjects.options.set('preset', 'islands#redCircleIcon');
+                //     result.geoObjects.get(0).properties.set({
+                //         balloonContentBody: 'Мое местоположение'
+                //     });
+                //     addressesMap.geoObjects.add(result.geoObjects);
+                // });
 
                 if (addressesMap) {
                     //объекты карты для geoQuery
