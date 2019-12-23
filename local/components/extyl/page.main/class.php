@@ -34,11 +34,6 @@ class ExtylPageMainComponent extends CBitrixComponent
         return $this;
     }
 
-//    protected function fillGlobalFilter()
-//    {
-//        $this->arResult['filter']
-//    }
-
     public function executeComponent()
     {
         $this
