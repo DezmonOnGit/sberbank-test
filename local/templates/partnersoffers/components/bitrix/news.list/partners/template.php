@@ -12,7 +12,10 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(false);
 ?>
-<div class="cards__inner container news-list">
+<div class="cards__inner container news-list"<?= \Extyl\Spasibo\Partners\Main\Page\AjaxTool::setTags('partners-list', 'main') ?>>
+<?
+\Extyl\Spasibo\Partners\Main\Page\AjaxTool::startArea();
+?>
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
 	<?=$arResult["NAV_STRING"]?><br />
 <?endif;?>
@@ -36,4 +39,5 @@ $this->setFrameMode(false);
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>
+    <? \Extyl\Spasibo\Partners\Main\Page\AjaxTool::endArea() ?>
 </div>

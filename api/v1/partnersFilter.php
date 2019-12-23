@@ -2,6 +2,7 @@
 const NO_KEEP_STATISTIC = true;
 const NO_AGENT_STATISTIC = true;
 const NO_AGENT_CHECK = true;
+const NOT_CHECK_PERMISSIONS = true;
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/modules/main/include/prolog_before.php');
 

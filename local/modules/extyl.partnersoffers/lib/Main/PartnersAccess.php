@@ -70,26 +70,31 @@ class PartnersAccess
         return $result ?: false;
     }
 
-    public static function getAvailableOffers()
+    public static function getAvailableOffers($ignoreSwitch = false)
     {
         $partners = static::getAvailablePartners();
         if ( ! $partners) {
             return false;
         }
 
-        if (Filter::getChargeAccept() === Filter::CHARGE) {
-            $selectProp = 'PROPERTY_CHARGE_OFFERS';
+        if ( ! $ignoreSwitch) {
+            if (Filter::getChargeAccept() === Filter::CHARGE) {
+                $selectProp = 'PROPERTY_CHARGE_OFFERS';
+                $select = [
+                    $selectProp,
+                ];
+            }
+            if (Filter::getChargeAccept() === Filter::ACCEPT) {
+                $selectProp = 'PROPERTY_ACCEPT_OFFERS';
+                $select = [
+                    $selectProp,
+                ];
+            }
+        } else {
             $select = [
-                $selectProp,
+                'PROPERTY_CHARGE_OFFERS',
+                'PROPERTY_ACCEPT_OFFERS',
             ];
-            $get = 'PROPERTY_CHARGE_OFFERS_VALUE';
-        }
-        if (Filter::getChargeAccept() === Filter::ACCEPT) {
-            $selectProp = 'PROPERTY_ACCEPT_OFFERS';
-            $select = [
-                $selectProp,
-            ];
-            $get = 'PROPERTY_ACCEPT_OFFERS_VALUE';
         }
 
         $res = \CIBlockElement::GetList(
@@ -105,27 +110,35 @@ class PartnersAccess
 
         $result = [];
         while ($row = $res->Fetch()) {
-            if ( ! $row[$get]) {
+            if (
+                ! $row['PROPERTY_CHARGE_OFFERS_VALUE']
+                && ! $row['PROPERTY_ACCEPT_OFFERS_VALUE']
+            ) {
                 continue;
             }
 
-            $elem = \CIBlockElement::GetList(
+            $rselem = \CIBlockElement::GetList(
                 [],
                 [
-                    '=ID' => $row[$get],
+                    '=ID' => [
+                        $row['PROPERTY_CHARGE_OFFERS_VALUE'] ?: $row['PROPERTY_ACCEPT_OFFERS_VALUE'],
+                        $row['PROPERTY_ACCEPT_OFFERS_VALUE'] ?: $row['PROPERTY_CHARGE_OFFERS_VALUE'],
+                    ],
                     '=IBLOCK_ID' => Iblocks::getId('sber_offers'),
                     '!=PROPERTY_NOT_SHOW_LIST' => 4, // fixme: hardcode, mk normal enum selection
                 ],
                 false,
                 false,
                 ['ID', 'IBLOCK_ID', 'PROPERTY_NOT_SHOW_LIST']
-            )->Fetch();
+            )
+            ;
 
-            if ( ! $elem) continue;
+            while ($elem = $rselem->Fetch()) {
 
-            $result[] = $row[$get];
+                $result[] = $elem['ID'];
+            }
         }
 
-        return $result ?: false;
+        return array_unique($result) ?: false;
     }
 }

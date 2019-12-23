@@ -82,6 +82,11 @@ class Filter
 
     public static function getCity()
     {
-        return static::getInstance()->city;
+        return static::getInstance()->city ?: \Bitrix\Main\Service\GeoIp\Manager::getCityName('', LANGUAGE_ID);
+    }
+
+    public static function cityManualSet()
+    {
+        return $_SESSION['filter_city_manual'];
     }
 }

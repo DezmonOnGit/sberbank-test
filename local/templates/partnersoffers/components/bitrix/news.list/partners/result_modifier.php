@@ -2,6 +2,8 @@
 
 use Extyl\Spasibo\Partners\Main\Filter;
 
+$arResult = array_merge($arResult, $arParams['additionalResult'] ?: []);
+
 foreach ($arResult['ITEMS'] as &$item) {
     if (
         $item['PROPERTIES']['CHARGE_PERCENT']['VALUE']
