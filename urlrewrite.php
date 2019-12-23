@@ -24,20 +24,36 @@ $arUrlRewrite=array (
     'PATH' => '/bitrix/services/ymarket/index.php',
     'SORT' => 100,
   ),
+  7 => 
+  array (
+    'CONDITION' => '#^/selections/(\\w+)/\\??.*$#',
+    'RULE' => 'ELEMENT_ID=$1',
+    'ID' => '',
+    'PATH' => '/selections/detail.php',
+    'SORT' => 100,
+  ),
+  8 => 
+  array (
+    'CONDITION' => '#^/partners/(\\w+)/\\??.*$#',
+    'RULE' => 'ELEMENT_ID=$1',
+    'ID' => '',
+    'PATH' => '/partners/detail.php',
+    'SORT' => 100,
+  ),
+  6 => 
+  array (
+    'CONDITION' => '#^/offers/(\\w+)/\\??.*$#',
+    'RULE' => 'ELEMENT_ID=$1',
+    'ID' => '',
+    'PATH' => '/offers/detail.php',
+    'SORT' => 100,
+  ),
   2 => 
   array (
     'CONDITION' => '#^/online/(/?)([^/]*)#',
     'RULE' => '',
     'ID' => NULL,
     'PATH' => '/desktop_app/router.php',
-    'SORT' => 100,
-  ),
-  6 => 
-  array (
-    'CONDITION' => '#^/personal/lists/#',
-    'RULE' => '',
-    'ID' => 'bitrix:lists',
-    'PATH' => '/personal/lists/index.php',
     'SORT' => 100,
   ),
   4 => 
