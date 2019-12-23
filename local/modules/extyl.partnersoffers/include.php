@@ -36,3 +36,10 @@ if ( ! function_exists('bxCacheManager')) {
     }
 }
 
+if ( ! function_exists('bxUser')) {
+    function bxUser()
+    {
+        global $USER;
+        return $USER;
+    }
+}

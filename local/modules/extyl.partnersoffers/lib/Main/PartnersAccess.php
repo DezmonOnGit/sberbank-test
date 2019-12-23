@@ -67,6 +67,8 @@ class PartnersAccess
             $result[] = $row['ID'];
         }
 
+        $result = array_intersect($result, static::getPartnersByRegion());
+
         return $result ?: false;
     }
 
@@ -125,7 +127,6 @@ class PartnersAccess
                         $row['PROPERTY_ACCEPT_OFFERS_VALUE'] ?: $row['PROPERTY_CHARGE_OFFERS_VALUE'],
                     ],
                     '=IBLOCK_ID' => Iblocks::getId('sber_offers'),
-                    '!=PROPERTY_NOT_SHOW_LIST' => 4, // fixme: hardcode, mk normal enum selection
                 ],
                 false,
                 false,
@@ -139,6 +140,113 @@ class PartnersAccess
             }
         }
 
-        return array_unique($result) ?: false;
+        $filter = [
+            'LOGIC' => 'OR',
+            'PROPERTY_IS_FEDERAL' => 5, // fixme hardcore
+            'PROPERTY_IS_ONLINE' => 6, // fixme hardcore
+        ];
+
+        if (bxUser()->IsAdmin()) {
+            $filter['!=PROPERTY_NOT_SHOW_LIST'] = 4; // fixme: hardcode, mk normal enum selection
+        }
+
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_offers'),
+                '=ID' => $result,
+                $filter,
+            ],
+            false,
+            false,
+            ['ID', 'IBLOCK_ID']
+        );
+
+        $return = [];
+        while ($row = $res->Fetch()) {
+            $return[] = $row['ID'];
+        }
+
+        return array_unique($return) ?: false;
+    }
+
+    public static function getPartnersByRegion()
+    {
+        $partners = [];
+        if ($addr = static::getAddressesByRegion()) {
+            $res = \CIBlockElement::GetList(
+                [],
+                [
+                    '=ID' => $addr,
+                    '=IBLOCK_ID' => Iblocks::getId('sber_partners_addresses'),
+                ],
+                false,
+                false,
+                [
+                    'PROPERTY_PARTNER',
+                ]
+            );
+
+            while ($row = $res->Fetch()) {
+                $partners[] = $row['PROPERTY_PARTNER_VALUE'];
+            }
+        }
+
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_partners'),
+                [
+                    'LOGIC' => 'OR',
+                    '=PROPERTY_IS_FEDERAL' => 1, // fixme: remove hardcore
+                    '=PROPERTY_IS_ONLINE' => 3, // fixme: remove hardcore
+                    '=PROPERERTY_CITY' => Filter::getCity(),
+                    '=PROPERTY_REGION' => Filter::getRegion(),
+                ],
+            ],
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_ID',
+            ]
+        );
+
+        while ($row = $res->Fetch()) {
+            $partners[] = $row['ID'];
+        }
+
+        return array_unique($partners);
+    }
+
+    public static function getAddressesByRegion()
+    {
+        $city = Filter::getCity();
+        $region = Filter::getRegion();
+
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_partners_addresses'),
+                [
+                    'LOGIC' => 'OR',
+                    '=PROPERTY_CITY' => $city,
+                    '=PROPERTY_REGION' => $region,
+                ]
+            ],
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_ID',
+            ]
+        );
+
+        $return = [];
+        while ($row = $res->Fetch()) {
+            $return[] = $row['ID'];
+        }
+
+        return $return;
     }
 }

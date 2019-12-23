@@ -1,6 +1,7 @@
 <?php
 
 use Extyl\Spasibo\Partners\Main\Filter;
+use Extyl\Spasibo\Partners\Main\PartnersAccess;
 use Extyl\Spasibo\Partners\Tools\Iblocks;
 
 $partner = [];
@@ -36,7 +37,7 @@ if ($offer) {
     }
 }
 
-$arResult['PARTNERS'] = $partner;
+$arResult['PARTNERS'] = array_intersect($partner, PartnersAccess::getAvailablePartners());
 
 foreach ($arResult['PARTNERS'] as &$partner) {
 
@@ -49,4 +50,4 @@ foreach ($arResult['PARTNERS'] as &$partner) {
 global $offersFilter;
 $offersFilter =& $GLOBALS['offersFilter'];
 $offersFilter = $arResult['PROPERTIES']['OFFERS']['VALUE'];
-$offersFilter = ['=ID' => array_intersect($offersFilter, \Extyl\Spasibo\Partners\Main\PartnersAccess::getAvailableOffers(true) ?: []) ?: false];
+$offersFilter = ['=ID' => array_intersect($offersFilter, PartnersAccess::getAvailableOffers(true) ?: []) ?: false];

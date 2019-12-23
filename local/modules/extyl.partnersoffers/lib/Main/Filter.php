@@ -7,6 +7,8 @@
 
 namespace Extyl\Spasibo\Partners\Main;
 
+use Extyl\Spasibo\Partners\Orm\Digests\CityTable;
+
 class Filter
 {
     const CAT_ALL = 'all';
@@ -20,6 +22,7 @@ class Filter
     protected $category = 'all';
     protected $chargeAccept = 'charge';
     protected $city = null;
+    protected $region = null;
 
     protected function __construct() {}
     protected function __clone() {}
@@ -39,6 +42,7 @@ class Filter
             static::$_instance->category = $_SESSION['partners_filter']['category'];
             static::$_instance->chargeAccept = $_SESSION['partners_filter']['charge_accept'];
             static::$_instance->city = $_SESSION['partners_filter']['city'];
+            static::$_instance->region = $_SESSION['partners_filter']['region'];
         }
         return static::$_instance;
     }
@@ -49,6 +53,7 @@ class Filter
             'category' => static::getInstance()->category,
             'charge_accept' => static::getInstance()->chargeAccept,
             'city' => static::getInstance()->city,
+            'region' => static::getInstance()->region,
         ];
     }
 
@@ -67,6 +72,12 @@ class Filter
     public static function setCity($city)
     {
         static::getInstance()->city = $city;
+        $res = CityTable::getList([
+            'filter' => ['NAME' => $city],
+            'limit' => 1,
+        ])->fetch();
+        static::getInstance()->region = $res['REGION'];
+
         static::setSessionData();
     }
 
@@ -82,7 +93,16 @@ class Filter
 
     public static function getCity()
     {
-        return static::getInstance()->city ?: \Bitrix\Main\Service\GeoIp\Manager::getCityName('', LANGUAGE_ID);
+        if ( ! static::getInstance()->city) {
+            static::setCity(\Bitrix\Main\Service\GeoIp\Manager::getCityName('', LANGUAGE_ID));
+        }
+
+        return static::getInstance()->city;
+    }
+
+    public static function getRegion()
+    {
+        return static::getInstance()->region;
     }
 
     public static function cityManualSet()

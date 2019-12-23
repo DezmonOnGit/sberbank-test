@@ -90,6 +90,7 @@
                         <div class="balloon__content">
                             <div class="title title__baloon">Ваш город</div>
                             <div class="balloon__city"><?= \Extyl\Spasibo\Partners\Main\Filter::getCity() ?></div>
+                            Регион: <?= \Extyl\Spasibo\Partners\Main\Filter::getRegion() ?>
                             <div class="bar bar__balloon">
                                 <div class="bar__item">
                                     <button class="button button--theme-green button__accept" type="button" onclick="location.href='?user-city=<?= \Extyl\Spasibo\Partners\Main\Filter::getCity() ?>'">Да, все верно</button>
@@ -111,52 +112,7 @@
                                 <i class="icon icon--search"></i>
                             </a>
                         </div>
-                        <div class="search__inner" style="top: 171px;">
-                            <div class="search__container container">
-                                <form action="" class="form form__search">
-                                    <div class="input-box input-box--row">
-                                        <input type="text" class="input input__search input__t-text">
-                                        <button class="button button__select" type="submit">Поиск</button>
-                                    </div>
-                                </form>
-                                <div class="search__result">
-                                    <div class="cards cards--item-inner-row">
-                                        <div class="cards__inner">
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">М.Видео</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-2.png" alt="cards-2">
-                                                </div>
-                                                <div class="cards__name">Холодильник.ру</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">20% спасибо за технику Electrolux</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-2.png" alt="cards-2">
-                                                </div>
-                                                <div class="cards__name">20% спасибо за технику</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">М.Видео</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <? $APPLICATION->IncludeComponent('bitrix:search.form', 'partners') ?>
                     </div>
                     <a href="" class="link link__login link--disabled">Войти</a>
                     <button class="button button__burger button--mobile" type="button">
@@ -165,62 +121,6 @@
                 </div>
                 <div class="header__phone">
                     <i class="icon icon--mobile icon--phone"></i> <a class="link" href="tel:900">900</a> — по России бесплатно
-                </div>
-                <div class="header__btns">
-                    <div class="search">
-                        <div class="search__outer">
-                            <a href="javascript: void(0);" class="search__btn search__btn--opener">
-                                <i class="icon icon--search"></i>
-                            </a>
-                        </div>
-                        <div class="search__inner">
-                            <div class="search__container container">
-                                <form action="" class="form form__search">
-                                    <div class="input-box input-box--row">
-                                        <input type="text" class="input input__search input__t-text">
-                                        <button class="button button__select" type="submit">Поиск</button>
-                                    </div>
-                                </form>
-                                <div class="search__result">
-                                    <div class="cards cards--item-inner-row">
-                                        <div class="cards__inner">
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">М.Видео</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-2.png" alt="cards-2">
-                                                </div>
-                                                <div class="cards__name">Холодильник.ру</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">20% спасибо за технику Electrolux</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-2.png" alt="cards-2">
-                                                </div>
-                                                <div class="cards__name">20% спасибо за технику</div>
-                                            </a>
-                                            <a href="" class="cards__item cards__info">
-                                                <div class="cards__img-box">
-                                                    <img class="cards__img" src="assets/img/cards-1.png" alt="cards-1">
-                                                </div>
-                                                <div class="cards__name">М.Видео</div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="" class="link link__login link--disabled">Войти</a>
                 </div>
             </div>
         </div>

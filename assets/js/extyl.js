@@ -50,26 +50,11 @@ window.top.Extyl.loadNext = function(type, id, options) {
     });
 };
 
-// (function() {
-//     jQuery.fn.reloadArea = function(options) {
-//
-//         options = options || {};
-//
-//         return this.each(function() {
-//
-//             var self = $(this);
-//             var data = JSON.parse(JSON.stringify(options));
-//             data.areaType = self.attr('data-area-type');
-//             $.ajax({
-//                 url: location.href,
-//                 dataType: 'html',
-//                 data: data,
-//                 method: 'get',
-//                 type: 'get',
-//                 success: function(msg) {
-//                     self.html(msg);
-//                 },
-//             });
-//         });
-//     };
-// })();
+window.top.Extyl.fillTemplate = function(templateId, options) {
+    let template = $('#'+templateId+'-template').html();
+
+    return template.replace(/{{\s*(.*?)\s*}}/g, function(g0, g1) {
+
+        return options[g1] || '';
+    });
+};

@@ -1,6 +1,8 @@
 <?php
 namespace Extyl\Spasibo\Partners\Tools;
 
+use Extyl\Spasibo\Partners\Main\Filter;
+
 class Utils
 {
     public static function getAddresses($partnerId)
@@ -10,6 +12,11 @@ class Utils
             [
                 'IBLOCK_ID' => \Extyl\Spasibo\Partners\Tools\Iblocks::getId('sber_partners_addresses'),
                 'PROPERTY_PARTNER' => $partnerId,
+                [
+                    'LOGIC' => 'OR',
+                    '=PROPERTY_CITY' => Filter::getCity(),
+                    '=PROPERTY_REGION' => Filter::getRegion(),
+                ],
             ],
             false,
             false,
@@ -38,5 +45,78 @@ class Utils
         }
 
         return array_values($maps);
+    }
+
+    public static function getPartnerByOffer($offerId)
+    {
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_partners'),
+                [
+                    'LOGIC' => 'OR',
+                    '=PROPERTY_CHARGE_OFFERS' => $offerId,
+                    '=PROPERTY_ACCEPT_OFFERS' => $offerId,
+                ],
+            ],
+            false,
+            false,
+            ['ID', 'IBLOCK_ID']
+        )->Fetch();
+
+        return [$res['ID'], $res['IBLOCK_ID']];
+    }
+
+    public static function getMaxCharge($partnerId)
+    {
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_partners'),
+                '=ID' => $partnerId,
+            ],
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_ID',
+                'PROPERTY_CHARGE_OFFERS',
+            ]
+        );
+
+        $offers = [];
+
+        while ($row = $res->Fetch()) {
+            $offers[] = $row['PROPERTY_CHARGE_OFFERS_VALUE'];
+        }
+
+        $offers = array_filter($offers);
+
+        if ( ! $offers) {
+            return 0;
+        }
+
+        $percents = [];
+
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                '=IBLOCK_ID' => Iblocks::getId('sber_offers'),
+                '=ID' => $offers ?: false,
+            ],
+            false,
+            false,
+            [
+                'ID',
+                'IBLOCK_ID',
+                'PROPERTY_CHARGE_PERCENT',
+            ]
+        );
+
+        while ($row = $res->Fetch()) {
+            $percents[] = (float) str_replace(',', '.', $row['PROPERTY_CHARGE_PERCENT_VALUE']);
+        }
+
+        return max($percents) ?: 0;
     }
 }

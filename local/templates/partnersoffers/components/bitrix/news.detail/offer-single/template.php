@@ -9,12 +9,6 @@ bxApp()->SetTitle($arResult['NAME']);
 </style>
 <main class="main">
     <div class="main__inner">
-<!--        <div class="breadcrumbs">-->
-<!--            <div class="breadcrumbs__inner container container--small">-->
-<!--                <a href="#" class="breadcrumbs__link">Скидочные купоны</a>-->
-<!--                <a href="#" class="breadcrumbs__link">Красота и здоровье</a>-->
-<!--            </div>-->
-<!--        </div>-->
         <div class="main__item title title--center title__main">
             <div class="title__inner container">
                 <h1 class="h1--narrow action__h1"><span class="h1--whiteBackground"><?= $arResult['NAME'] ?></span></h1>
@@ -48,8 +42,8 @@ bxApp()->SetTitle($arResult['NAME']);
                         <?= htmlspecialchars_decode($arResult['DETAIL_TEXT']); ?>
                     </div>
                 <? endif; ?>
-                <? if ($arResult['PROPERTIES']['RULES']['SRC']): ?>
-                    <a href="<?= $arResult['PROPERTIES']['RULES']['SRC'] ?>" class="action__rules"><?= $arResult['PROPERTIES']['FILE_NAME']['VALUE'] ?: 'Правила акции' ?></a>
+                <? if ($arResult['PROPERTIES']['RULES']['VALUE']['SRC']): ?>
+                    <a href="<?= $arResult['PROPERTIES']['RULES']['VALUE']['SRC'] ?>" target="_blank" class="action__rules"><?= $arResult['PROPERTIES']['FILE_NAME']['VALUE'] ?: 'Правила акции' ?></a>
                 <? endif; ?>
             </div>
         </div>
@@ -64,10 +58,12 @@ bxApp()->SetTitle($arResult['NAME']);
                         <div class="map__list">
                         </div>
                     </div>
-                    <div class="map__wrapper">
-                        <div id="map-action" class="map__inner"></div>
-                        <div class="map__mask"></div>
-                    </div>
+                    <? if ($arResult['addresses']): ?>
+                        <div class="map__wrapper">
+                            <div id="map-action" class="map__inner"></div>
+                            <div class="map__mask"></div>
+                        </div>
+                    <? endif; ?>
                 </div>
             </div>
         </div>
