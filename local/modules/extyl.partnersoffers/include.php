@@ -1,4 +1,6 @@
 <?php
+Bitrix\Main\Loader::includeModule('iblock');
+
 spl_autoload_register(
     function ($className)
     {
@@ -22,11 +24,22 @@ if ( ! function_exists('bxApp')) {
     function bxApp()
     {
         global $APPLICATION;
-
         return $APPLICATION;
     }
 }
 
-if (ADMIN_SECTION !== true) {
-    partnersoffers()::initFacades();
+if ( ! function_exists('bxCacheManager')) {
+    function bxCacheManager ()
+    {
+        global $CACHE_MANAGER;
+        return $CACHE_MANAGER;
+    }
+}
+
+if ( ! function_exists('bxUser')) {
+    function bxUser()
+    {
+        global $USER;
+        return $USER;
+    }
 }

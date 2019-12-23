@@ -1,0 +1,3 @@
+[submodule "local/modules/extyl.dbversion"]
+	path = local/modules/extyl.dbversion
+	url = git@github.com:wingynidhoggr/extyl.dbversion.git
