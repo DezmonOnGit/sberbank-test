@@ -56,4 +56,33 @@ class Iblocks
 
         return $res->fetch()['ID'];
     }
+
+    public static function mkResulArrayFromId($element, $iblock, $filter = [])
+    {
+        $res = \CIBlockElement::GetList(
+            [],
+            [
+                'IBLOCK_ID' => $iblock,
+                'ID' => $element,
+                $filter,
+            ],
+            false,
+            false
+        )->GetNextElement();
+
+        if ( ! $res) {
+            return false;
+        }
+
+        $result = $res->GetFields();
+        $result['PROPERTIES'] = $res->GetProperties();
+
+        $result['PREVIEW_PICTURE'] = \CFile::GetFileArray($result['PREVIEW_PICTURE']);
+        $result['PREVIEW_PICTURE']['SRC'] = \CFile::GetFileSRC($result['PREVIEW_PICTURE']);
+
+        $result['DETAIL_PICTURE'] = \CFile::GetFileArray($result['DETAIL_PICTURE']);
+        $result['DETAIL_PICTURE']['SRC'] = \CFile::GetFileSRC($result['DETAIL_PICTURE']);
+
+        return $result;
+    }
 }
