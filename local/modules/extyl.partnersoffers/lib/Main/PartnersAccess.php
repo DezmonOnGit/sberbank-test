@@ -144,6 +144,19 @@ class PartnersAccess
             'LOGIC' => 'OR',
             'PROPERTY_IS_FEDERAL' => 5, // fixme hardcore
             'PROPERTY_IS_ONLINE' => 6, // fixme hardcore
+            [
+                'LOGIC' => 'OR',
+                [
+                    'LOGIC' => 'OR',
+                    'PROPERTY_CITY' => Filter::getCity(),
+                    '=PROPERTY_CITY' => false,
+                ],
+                [
+                    'LOGIC' => 'OR',
+                    'PROPERTY_REGION' => Filter::getRegion(),
+                    '=PROPERTY_REGION' => false,
+                ]
+            ]
         ];
 
         if (bxUser()->IsAdmin()) {
