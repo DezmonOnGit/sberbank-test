@@ -4,24 +4,43 @@ window.top.Extyl.SearchForm = {
 
     SEARCH_AJAX_URL: null,
     CONTAINER: null,
+    FORM: null,
 
     init: function() {
 
         Extyl.SearchForm.CONTAINER = $('[data-role="search-result-area"]');
 
-        $('form.form__search')
+        this.FORM = $('form.form__search');
+
+        this.FORM
             .off('submit', Extyl.SearchForm.search)
             .on('submit', Extyl.SearchForm.search)
+        ;
+
+        this.FORM.find('input.input__search')
+            .off('keyup', Extyl.SearchForm.search)
+            .on('keyup', Extyl.SearchForm.search)
         ;
     },
 
     search: function(e) {
 
-        e.preventDefault();
+        if (e.type === 'submit') {
+            e.preventDefault();
+        }
+        console.log(e);
+        if (e.key === 'Escape') {
+            Extyl.Search.hideInner();
+            return;
+        }
 
-        var form = $(e.target);
+        var form = $(Extyl.SearchForm.FORM);
 
-        var q = form.find('input[type="text"]').val();
+        var q = form.find('input.input__search').val();
+        if ( ! q.length) {
+            Extyl.SearchForm.CONTAINER.html('<h5 style="color:gray;">По вашему запросу ничего не найдено</h5><br>');
+            return;
+        }
 
         $.ajax({
             url: Extyl.SearchForm.SEARCH_AJAX_URL,
@@ -32,9 +51,9 @@ window.top.Extyl.SearchForm = {
             success: function(msg) {
                 Extyl.SearchForm.CONTAINER.html('');
 
-                if ( ! msg.status) {
+                if (!msg.status) {
                     for (var er in msg.errors) {
-                        Extyl.SearchForm.CONTAINER.append('<h5 style="color:gray;">'+msg.errors[er].title+'</h5>');
+                        Extyl.SearchForm.CONTAINER.append('<h5 style="color:gray;">' + msg.errors[er].title + '</h5><br>');
                     }
                 } else {
                     for (var da in msg.data) {

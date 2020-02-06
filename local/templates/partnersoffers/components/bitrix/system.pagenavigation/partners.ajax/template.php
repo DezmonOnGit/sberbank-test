@@ -10,6 +10,5 @@
     </div>
 <? endif; ?>
 <script>
-    Extyl.partnersPager.current_page = 1;
     Extyl.partnersPager.init();
 </script>

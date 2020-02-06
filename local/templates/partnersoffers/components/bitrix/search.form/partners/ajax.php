@@ -1,8 +1,8 @@
 <?php
-
 use Bitrix\Iblock\ElementTable;
 use Extyl\Spasibo\Partners\Tools\Iblocks;
 use Extyl\Spasibo\Partners\Tools\Utils;
+
 const NO_KEEP_STATISTIC = true;
 const NO_AGENT_STATISTIC = true;
 const NO_AGENT_CHECK = true;
@@ -29,15 +29,21 @@ $queryTemplate = [
             Iblocks::getId('sber_partners'),
             Iblocks::getId('sber_offers'),
         ],
+        '!=ACTIVE' => 'N',
+        'ID' => array_merge(
+            Extyl\Spasibo\Partners\Main\PartnersAccess::getAvailablePartners() ?: [],
+            Extyl\Spasibo\Partners\Main\PartnersAccess::getAvailableOffers(true) ?: []
+        ),
     ],
     'limit' => 10,
 ];
 
 $res = ElementTable::getList(array_merge_recursive(
-    $queryTemplate, [
+    $queryTemplate,
+    [
         'filter' => [
             'NAME' => $queryString . '%',
-        ]
+        ],
     ]
 ));
 
@@ -53,12 +59,14 @@ while ($row = $res->fetch()) {
     $item['picture'] = CFile::GetFileSRC(CFile::GetFileArray($row['PREVIEW_PICTURE']));
 
     switch ($row['IBLOCK_ID']) {
-        case Iblocks::getId('sber_partners'): {
-            $item['href'] = '/partners/'.$row['ID'].'/';
+        case Iblocks::getId('sber_partners'):
+        {
+            $item['href'] = '/partners/' . $row['ID'] . '/';
             break;
         }
-        case Iblocks::getId('sber_offers'): {
-            $item['href'] = '/offers/'.$row['ID'].'/';
+        case Iblocks::getId('sber_offers'):
+        {
+            $item['href'] = '/offers/' . $row['ID'] . '/';
             $item['picture'] = Iblocks::mkResulArrayFromId(...Utils::getPartnerByOffer($row['ID']))['PREVIEW_PICTURE']['SRC'];
             break;
         }
@@ -70,14 +78,16 @@ while ($row = $res->fetch()) {
 
 if (count($arData) < 10) {
 
-    $res = ElementTable::getList(array_merge(array_merge_recursive(
-        $queryTemplate, [
+    $res = ElementTable::getList(array_merge_recursive(
+        $queryTemplate,
+        [
             'filter' => [
                 'NAME' => '%' . $queryString . '%',
                 '!=ID' => $found,
             ],
+            'limit' => 10 - count($arData),
         ]
-    )), ['limit' => 10 - count($arData)]);
+    ));
 
     while ($row = $res->fetch()) {
         $item = [
@@ -89,12 +99,14 @@ if (count($arData) < 10) {
         $item['picture'] = CFile::GetFileSRC(CFile::GetFileArray($row['PREVIEW_PICTURE']));
 
         switch ($row['IBLOCK_ID']) {
-            case Iblocks::getId('sber_partners'): {
-                $item['href'] = '/partners/'.$row['ID'].'/';
+            case Iblocks::getId('sber_partners'):
+            {
+                $item['href'] = '/partners/' . $row['ID'] . '/';
                 break;
             }
-            case Iblocks::getId('sber_offers'): {
-                $item['href'] = '/offers/'.$row['ID'].'/';
+            case Iblocks::getId('sber_offers'):
+            {
+                $item['href'] = '/offers/' . $row['ID'] . '/';
                 $item['picture'] = Iblocks::mkResulArrayFromId(...Utils::getPartnerByOffer($row['ID']))['PREVIEW_PICTURE']['SRC'];
                 break;
             }
@@ -105,7 +117,7 @@ if (count($arData) < 10) {
 }
 
 if ( ! $arData) {
-    $reply->error('По вашему запросу ничего не найдено');
+    $reply->error('По вашему запросу ничего не найдено')->critical();
 }
 
 $reply->setData($arData)->reply();

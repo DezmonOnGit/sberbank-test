@@ -4,12 +4,12 @@
             $arResult['record_left'], [
                 'Ещё {val} предложение',
                 'Ещё {val} предложения',
-                'Ещё {val} предложениий',
+                'Ещё {val} предложений',
             ]
         )?></a>
     </div>
 <? endif; ?>
 <script>
-    Extyl.offersPager.current_page = 1;
+    // Extyl.offersPager.current_page = 1;
     Extyl.offersPager.init();
 </script>

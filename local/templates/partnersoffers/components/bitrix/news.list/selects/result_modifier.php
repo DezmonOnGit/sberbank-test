@@ -1,11 +1,10 @@
 <?php
 
-use Extyl\Spasibo\Partners\Main\Filter;
 use Extyl\Spasibo\Partners\Main\PartnersAccess;
 use Extyl\Spasibo\Partners\Tools\Iblocks;
 use Extyl\Spasibo\Partners\Tools\Utils;
 
-$availOffers = PartnersAccess::getAvailableOffers(false) ?: [];
+$availOffers = PartnersAccess::getAvailableOffers(true, true) ?: [];
 foreach ($arResult['ITEMS'] as $i => &$item) {
     $partner = [];
 
@@ -40,14 +39,30 @@ foreach ($arResult['ITEMS'] as $i => &$item) {
         }
     }
 
-    $item['PARTNERS'] = array_intersect($partner, PartnersAccess::getAvailablePartners() ?: []);
+    $item['PARTNERS'] = array_intersect($partner, PartnersAccess::getAvailablePartners(true) ?: []);
 
-    foreach ($item['PARTNERS'] as &$partner) {
+    foreach ($item['PARTNERS'] as $k => $partner) {
         $partner = Iblocks::mkResulArrayFromId($partner, Iblocks::getId('sber_partners'));
 
-        $partner['PERCENT_TEXT'] = ($max = Utils::getMaxCharge($partner['ID'])) ? $max.'%' : false;
+        $partner['PERCENT_TEXT'] = ($max = Utils::getMaxCharge($partner['ID'])) ? $max . '%' : false;
+
+        $partnerOffers = array_merge(
+            $partner['PROPERTIES']['CHARGE_OFFERS']['VALUE'] ?: [],
+            $partner['PROPERTIES']['ACCEPT_OFFERS']['VALUE'] ?: []
+        );
+
+        if (array_intersect($partnerOffers, PartnersAccess::getAvailableOffers() ?: [])) {
+            $item['PARTNERS'][$k] = $partner;
+        } else {
+            unset($item['PARTNERS'][$k]);
+        }
     }
-    unset($partner);
+
+    $item['PARTNERS'] = array_values($item['PARTNERS']);
+
+    if ( ! $item['PARTNERS']) {
+        unset($arResult['ITEMS'][$i]);
+    }
 }
 
 $GLOBALS['offersFilter'] = $arResult['PROPERTIES']['OFFERS']['VALUE'];

@@ -119,9 +119,6 @@
                         <span class="button__burger-line"></span>
                     </button>
                 </div>
-                <div class="header__phone">
-                    <i class="icon icon--mobile icon--phone"></i> <a class="link" href="tel:900">900</a> — по России бесплатно
-                </div>
             </div>
         </div>
     </div>

@@ -21,9 +21,9 @@ class PartnersAccess
         return [];
     }
 
-    public static function getAvailablePartners()
+    public static function getAvailablePartners($ignoreCategory = false)
     {
-        $currentCategory = Filter::getCategory();
+        $currentCategory = $ignoreCategory ? null : Filter::getCategory();
 
         if (is_numeric($currentCategory)) {
             $filter = [
@@ -72,9 +72,9 @@ class PartnersAccess
         return $result ?: false;
     }
 
-    public static function getAvailableOffers($ignoreSwitch = false)
+    public static function getAvailableOffers($ignoreSwitch = false, $ignoreCategory = false)
     {
-        $partners = static::getAvailablePartners();
+        $partners = static::getAvailablePartners($ignoreCategory);
         if ( ! $partners) {
             return false;
         }
@@ -113,7 +113,8 @@ class PartnersAccess
         $result = [];
         while ($row = $res->Fetch()) {
             if (
-                ! $row['PROPERTY_CHARGE_OFFERS_VALUE']
+                ! $ignoreSwitch
+                && ! $row['PROPERTY_CHARGE_OFFERS_VALUE']
                 && ! $row['PROPERTY_ACCEPT_OFFERS_VALUE']
             ) {
                 continue;
@@ -140,10 +141,27 @@ class PartnersAccess
             }
         }
 
+        if ( ! $result) {
+            return false;
+        }
+
         $filter = [
             'LOGIC' => 'OR',
             'PROPERTY_IS_FEDERAL' => 5, // fixme hardcore
             'PROPERTY_IS_ONLINE' => 6, // fixme hardcore
+            [
+                'LOGIC' => 'OR',
+                [
+                    'LOGIC' => 'OR',
+                    'PROPERTY_CITY' => Filter::getCity(),
+                    '=PROPERTY_CITY' => false,
+                ],
+                [
+                    'LOGIC' => 'OR',
+                    'PROPERTY_REGION' => Filter::getRegion(),
+                    '=PROPERTY_REGION' => false,
+                ]
+            ]
         ];
 
         if (bxUser()->IsAdmin()) {
@@ -200,7 +218,7 @@ class PartnersAccess
                     'LOGIC' => 'OR',
                     '=PROPERTY_IS_FEDERAL' => 1, // fixme: remove hardcore
                     '=PROPERTY_IS_ONLINE' => 3, // fixme: remove hardcore
-                    '=PROPERERTY_CITY' => Filter::getCity(),
+                    '=PROPERTY_CITY' => Filter::getCity(),
                     '=PROPERTY_REGION' => Filter::getRegion(),
                 ],
             ],
