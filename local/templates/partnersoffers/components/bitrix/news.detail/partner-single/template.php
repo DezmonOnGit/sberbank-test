@@ -39,8 +39,8 @@
             <? if ($arResult['addresses']): ?>
                 <div class="map map--box">
                     <div id="map-partner" class="map__inner"></div>
-                    <div class="partners__addresses">
-                        <a href="#partner-addresses" class="link link--theme-green link--modal-opener"><?= \Extyl\Spasibo\Partners\Tools\Lang::getNumericString(
+                    <div href="#partner-addresses" class="partners__addresses link--modal-opener">
+                        <a class="link link--theme-green"><?= \Extyl\Spasibo\Partners\Tools\Lang::getNumericString(
                             count($arResult['addresses']),
                             [
                                 '{val} адрес',
@@ -66,19 +66,6 @@
                     <? if ($arResult['PROPERTIES']['CHARGE_OFFERS'] || $arResult['PROPERTIES']['CHARGE_PERCENT']['VALUE']): ?>
                     <div class="tabs__item tabs__item--active" data-tab-index="1">
                         <div class="list list__bonuses list--theme-night">
-<!--                            <div class="list__item list__item--highlight">-->
-<!--                                <div class="list__percents">99%</div>-->
-<!--                                <div class="list__content">-->
-<!--                                    <div class="marks">-->
-<!--                                        <div class="marks__inner">-->
-<!--                                            <div class="marks__item">-->
-<!--                                                <div class="marks__text">Для Вас</div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="list__text">В рамках вашего уровня привилегий «Огромное спасибо» до 31 мая 2019</div>-->
-<!--                                </div>-->
-<!--                            </div>-->
                             <? foreach ($arResult['PROPERTIES']['CHARGE_OFFERS'] as $offer): ?>
                                 <?= $offer['PREVIEW_TEXT'] ?>
                             <? endforeach; ?>
@@ -89,23 +76,11 @@
                     <? if ($arResult['PROPERTIES']['ACCEPT_OFFERS'] || $arResult['PROPERTIES']['ACCEPT_PERCENT']['VALUE']): ?>
                     <div class="tabs__item" data-tab-index="2">
                         <div class="list list__bonuses list--theme-night">
-<!--                            <div class="list__item list__item--highlight">-->
-<!--                                <div class="list__percents">99%</div>-->
-<!--                                <div class="list__content">-->
-<!--                                    <div class="marks">-->
-<!--                                        <div class="marks__inner">-->
-<!--                                            <div class="marks__item">-->
-<!--                                                <div class="marks__text">Для Вас</div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div class="list__text">В рамках вашего уровня привилегий «Огромное спасибо» до 31 мая 2019</div>-->
-<!--                                </div>-->
-<!--                            </div>-->
                             <? foreach ($arResult['PROPERTIES']['ACCEPT_OFFERS'] as $offer): ?>
                                 <?= $offer['PREVIEW_TEXT'] ?>
                             <? endforeach; ?>
                         </div>
+                        <?= htmlspecialchars_decode($arResult['PROPERTIES']['ACCEPT_OFFERS_TXT']['VALUE']['TEXT']) ?>
                     </div>
                     <? endif; ?>
                 </div>

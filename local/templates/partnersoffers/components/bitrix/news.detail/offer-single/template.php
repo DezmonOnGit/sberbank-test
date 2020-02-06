@@ -47,9 +47,9 @@ bxApp()->SetTitle($arResult['NAME']);
                 <? endif; ?>
             </div>
         </div>
-        <div class="main__item address">
+        <div class="main__item <?= $arResult['addresses'] ? 'address' : '' ?>">
             <div class="address__partner container container--small">
-                <div class="map map--box map--list map--box-large map__addresses">
+                <div class="map map--box map--list <?= $arResult['addresses'] ? 'map--box-large' : '' ?> map__addresses">
                     <div class="address__img-box">
                         <img class="address__img square_70 rounded" src="<?= $arResult['PARTNER']['PREVIEW_PICTURE']['SRC'] ?>" alt="partners-1">
                     </div>

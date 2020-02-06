@@ -16,3 +16,10 @@
     height: 70px;
     width: 70px;
 }
+@media all and (max-width: 767px)
+{
+    .filter__inner {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

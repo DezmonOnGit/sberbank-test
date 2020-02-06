@@ -76,12 +76,20 @@ class Iblocks
 
         $result = $res->GetFields();
         $result['PROPERTIES'] = $res->GetProperties();
-
+        
         $result['PREVIEW_PICTURE'] = \CFile::GetFileArray($result['PREVIEW_PICTURE']);
-        $result['PREVIEW_PICTURE']['SRC'] = \CFile::GetFileSRC($result['PREVIEW_PICTURE']);
+        if ($result['PREVIEW_PICTURE']) {
+            $result['PREVIEW_PICTURE']['SRC'] = \CFile::GetFileSRC($result['PREVIEW_PICTURE']);
+        } else {
+            $result['PREVIEW_PICTURE']['SRC'] = '/dummy.jpg';
+        }
 
         $result['DETAIL_PICTURE'] = \CFile::GetFileArray($result['DETAIL_PICTURE']);
-        $result['DETAIL_PICTURE']['SRC'] = \CFile::GetFileSRC($result['DETAIL_PICTURE']);
+        if ($result['DETAIL_PICTURE']) {
+            $result['DETAIL_PICTURE']['SRC'] = \CFile::GetFileSRC($result['DETAIL_PICTURE']);
+        } else {
+            $result['DETAIL_PICTURE']['SRC'] = '/dummy.jpg';
+        }
 
         return $result;
     }

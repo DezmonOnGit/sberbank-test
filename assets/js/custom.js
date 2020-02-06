@@ -1,49 +1,57 @@
+if ( !!! Extyl) {
+    window.top.Extyl = {};
+}
+if ( !!! Extyl['Search']) {
+    Extyl.Search = {};
+}
 $(function () {
 
     //search
     if($('.search').length) {
-        var search = {};
-        search.wrapper = $('.search');
-        search.header = search.wrapper.closest('.header');
-        search.btnOpener = search.wrapper.find('.search__btn--opener');
-        search.inner = search.wrapper.find('.search__inner');
+        Extyl.Search.wrapper = $('.search');
+        Extyl.Search.header = Extyl.Search.wrapper.closest('.header');
+        Extyl.Search.btnOpener = Extyl.Search.wrapper.find('.search__btn--opener');
+        Extyl.Search.inner = Extyl.Search.wrapper.find('.search__inner');
 
-        search.calcInnerOffset = function() {
-            if(search.header.length) {
-                search.inner.css({
-                    top: search.header.innerHeight(),
+        Extyl.Search.calcInnerOffset = function() {
+            if(Extyl.Search.header.length) {
+                Extyl.Search.inner.css({
+                    top: Extyl.Search.header.innerHeight(),
                 });
             }
         };
 
-        search.showInner = function() {
-            search.inner.slideDown();
-            search.inner.addClass('search__inner--open');
+        Extyl.Search.showInner = function() {
+            Extyl.Search.inner.slideDown();
+            Extyl.Search.inner.addClass('search__inner--open');
+            Extyl.Search.wrapper.find('input.input__search').focus();
         };
 
-        search.hideInner = function() {
-            search.inner.slideUp(function () {
-                search.inner.removeClass('search__inner--open');
+        Extyl.Search.hideInner = function() {
+            Extyl.Search.inner.slideUp(function () {
+                $('[data-role="search-result-area"]').html('');
+                Extyl.Search.wrapper.find('input.input__search').val('');
+                Extyl.Search.inner.removeClass('search__inner--open');
             });
         };
 
-        search.init = function() {
-            search.calcInnerOffset();
+        Extyl.Search.init = function() {
+            Extyl.Search.calcInnerOffset();
 
             $(window).resize(function () {
-                search.calcInnerOffset();
+                Extyl.Search.calcInnerOffset();
             });
 
-            search.btnOpener.on('click', function () {
-                if(search.inner.hasClass('search__inner--open')) {
-                    search.hideInner();
+            Extyl.Search.btnOpener.on('click', function () {
+                if(Extyl.Search.inner.hasClass('search__inner--open')) {
+                    Extyl.Search.hideInner();
                 } else {
-                    search.showInner();
+                    Extyl.Search.showInner();
                 }
             });
         };
 
-        search.init();
+        Extyl.Search.init();
     };
 
 

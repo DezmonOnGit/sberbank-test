@@ -25,10 +25,10 @@
                 </div>
             </a>
             <? endforeach; ?>
+            <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
+                <br /><?= $arResult["NAV_STRING"] ?>
+            <?endif;?>
             <? \Extyl\Spasibo\Partners\Main\Page\AjaxTool::endArea() ?>
         </div>
     </div>
-    <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-        <br /><?=$arResult["NAV_STRING"]?>
-    <?endif;?>
 <? endif;

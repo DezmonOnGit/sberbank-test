@@ -37,9 +37,11 @@ foreach ($arResult['PROPERTIES']['CHARGE_OFFERS']['VALUE'] as $offer) {
                 </div>
             ';
         } else {
+            $prc = $ofr['PROPERTIES']['CHARGE_PERCENT']['VALUE'];
+            $prc = is_numeric($prc) ? $prc.'%' : $prc;
             $ofr['PREVIEW_TEXT'] = '
                 <div class="list__item">
-                    <div class="list__percents"></div>
+                    <div class="list__percents">'.$prc.'</div>
                     <div class="list__content">
                         <div class="list__text">'.htmlspecialchars_decode($ofr['PREVIEW_TEXT']).'</div>
                     </div>
@@ -83,9 +85,11 @@ foreach ($arResult['PROPERTIES']['ACCEPT_OFFERS']['VALUE'] as $offer) {
                 </div>
             ';
         } else {
+            $prc = $ofr['PROPERTIES']['ACCEPT_PERSENT']['VALUE'];
+            $prc = is_numeric($prc) ? $prc.'%' : $prc;
             $ofr['PREVIEW_TEXT'] = '
                 <div class="list__item">
-                    <div class="list__percents"></div>
+                    <div class="list__percents">'.$prc.'</div>
                     <div class="list__content">
                         <div class="list__text">'.htmlspecialchars_decode($ofr['PREVIEW_TEXT']).'</div>
                     </div>
