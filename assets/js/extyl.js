@@ -58,3 +58,33 @@ window.top.Extyl.fillTemplate = function(templateId, options) {
         return options[g1] || '';
     });
 };
+
+window.top.Extyl.compareObjects = function(obj_1, obj_2, strict) {
+    strict = strict || false;
+    if (
+        typeof obj_1 !== 'object'
+        || typeof obj_2 !== 'object'
+    ) {
+        return (
+            strict && obj_1 === obj_2
+            || ! strict && obj_1 == obj_2
+        );
+    }
+
+    var keys = [].concat(Object.keys(obj_1), Object.keys(obj_2));
+
+    for (var i in keys) {
+        if (obj_1.hasOwnProperty(keys[i])) {
+            if ( ! obj_2.hasOwnProperty(keys[i])) {
+                return false;
+            }
+            if ( ! Extyl.compareObjects(obj_1[keys[i]], obj_2[keys[i]])) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    return true;
+};

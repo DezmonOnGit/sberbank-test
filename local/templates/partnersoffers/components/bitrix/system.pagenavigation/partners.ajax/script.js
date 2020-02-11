@@ -23,4 +23,10 @@ Extyl.partnersPager = {
             PAGEN_1: ++self.current_page,
         });
     },
+    dropPage: function() {
+
+        var self = Extyl.partnersPager;
+
+        self.current_page = 1;
+    },
 };

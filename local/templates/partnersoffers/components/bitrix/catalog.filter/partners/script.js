@@ -11,13 +11,18 @@ if ( !!! window.top.Extyl) {
  */
 window.top.Extyl.setPartnersFilter = function(filter) {
 
+    var self = Extyl.PartnersFilter;
     $.ajax({
         url: '/api/v1/partnersFilter.php',
         dataType: 'json',
         data: filter,
         success: function(msg) {
 
-            Extyl.PartnersFilter.current = filter;
+            if ( ! Extyl.compareObjects(self.current, filter)) {
+                Extyl.partnersPager.dropPage();
+            }
+
+            self.current = filter;
 
             Extyl.reloadArea('partners-list');
             Extyl.reloadArea('offers-list');
@@ -65,7 +70,6 @@ window.top.Extyl.PartnersFilter = {
     },
 
     calcLineSize: function() {
-        console.log('line height ' + ($('div.filter__item')[0].offsetHeight + 8));
         Extyl.PartnersFilter.lineSize = $('div.filter__item')[0].offsetHeight + 8;
     },
 
@@ -75,18 +79,14 @@ window.top.Extyl.PartnersFilter = {
         var lastAddedId = null;
         self.removeMoreButton();
         for (i in self.categories) {
-            console.log(self.categories[i]);
             self.addMoreButton();
             // self.addMoreButton();
             if (self.countLines() > willDisplay) {
-                console.log(self.countLines(), willDisplay);
-                console.log('REMOVE '+lastAddedId);
                     $('[data-cat-id="'+lastAddedId+'"]').remove();
                     self.displayedCats = self.displayedCats.filter(function(item) {return item !== lastAddedId});
                 break;
             }
             self.removeMoreButton();
-            console.log('Append '+self.categories[i].NAME + '['+self.categories[i].ID+']');
             self.CONTAINER.append($('script#button-template').html()
                 .replace(/{{cat-id}}/g, self.categories[i].ID)
                 .replace(/{{cat-name}}/g, self.categories[i].NAME)
@@ -100,7 +100,6 @@ window.top.Extyl.PartnersFilter = {
 
         for (i in self.categories) {
             if (~self.displayedCats.indexOf(self.categories[i].ID)) {
-                console.log('i delete '+self.categories[i].NAME);
                 delete self.categories[i];
                 continue;
             }
@@ -111,7 +110,6 @@ window.top.Extyl.PartnersFilter = {
             self.addMoreButton();
         }
 
-        // self.displayLines = Math.floor(self.countLines());
         self.displayLines = (self.countLines());
 
         self.initEvents();
@@ -154,10 +152,10 @@ window.top.Extyl.PartnersFilter = {
                 chargeAccept: self.current.chargeAccept || 'charge',
             });
         }
+        Extyl.partnersPager.dropPage();
     },
 
     setChargeAccept: function (e) {
-        console.log(1);
         var self = Extyl.PartnersFilter;
         if (typeof e === 'object') {
             var val = $(this).is(':checked') ? 'accept' : 'charge';
@@ -168,5 +166,6 @@ window.top.Extyl.PartnersFilter = {
                 chargeAccept: e,
             });
         }
+        Extyl.partnersPager.dropPage();
     },
 };
