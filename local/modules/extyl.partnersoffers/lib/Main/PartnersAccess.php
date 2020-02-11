@@ -146,27 +146,27 @@ class PartnersAccess
         }
 
         $filter = [
-            'LOGIC' => 'OR',
-            'PROPERTY_IS_FEDERAL' => 5, // fixme hardcore
-            'PROPERTY_IS_ONLINE' => 6, // fixme hardcore
             [
                 'LOGIC' => 'OR',
+                'PROPERTY_IS_FEDERAL' => 5, // fixme hardcore
+                'PROPERTY_IS_ONLINE' => 6, // fixme hardcore
                 [
                     'LOGIC' => 'OR',
-                    'PROPERTY_CITY' => Filter::getCity(),
-                    '=PROPERTY_CITY' => false,
+                    [
+                        'LOGIC' => 'OR',
+                        'PROPERTY_CITY' => Filter::getCity(),
+                        '=PROPERTY_CITY' => false,
+                    ],
+                    [
+                        'LOGIC' => 'OR',
+                        'PROPERTY_REGION' => Filter::getRegion(),
+                        '=PROPERTY_REGION' => false,
+                    ]
                 ],
-                [
-                    'LOGIC' => 'OR',
-                    'PROPERTY_REGION' => Filter::getRegion(),
-                    '=PROPERTY_REGION' => false,
-                ]
             ]
         ];
 
-        if (bxUser()->IsAdmin()) {
-            $filter['!=PROPERTY_NOT_SHOW_LIST'] = 4; // fixme: hardcode, mk normal enum selection
-        }
+        $filter['!=PROPERTY_NOT_SHOW_LIST'] = 4; // fixme: hardcode, mk normal enum selection
 
         $res = \CIBlockElement::GetList(
             [],

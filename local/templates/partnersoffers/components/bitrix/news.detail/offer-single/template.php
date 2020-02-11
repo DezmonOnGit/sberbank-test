@@ -33,7 +33,10 @@ bxApp()->SetTitle($arResult['NAME']);
                     </div>
                 <? else: ?>
                     <div class="action__annonce">
-                        <span class="action__percent"></span>
+                        <span class="action__percent"><?= (
+                            $arResult['PROPERTIES']['CHARGE_PERCENT']['VALUE']
+                            ?: $arResult['PROPERTIES']['ACCEPT_PERCENT']['VALUE']
+                        ) . '%' ?></span>
                         <span class="action__subtitle"><?= htmlspecialchars_decode($arResult['PREVIEW_TEXT']); ?></span>
                     </div>
                 <? endif; ?>
